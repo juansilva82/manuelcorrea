@@ -109,8 +109,29 @@ section{padding:96px 0;scroll-margin-top:68px}
 @media (max-width:900px){.quien{grid-template-columns:1fr;gap:36px}.foto{max-width:420px}}
 @media (max-width:520px){.trayectoria{grid-template-columns:1fr}}
 
+
+/* Comisiones */
+#comisiones{background:var(--niebla)}
+.comisiones{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;list-style:none;margin:0;padding:0}
+.comision{background:#fff;border-radius:var(--r-l);overflow:hidden;display:flex;flex-direction:column}
+.comision .banda{padding:22px 24px 18px;color:#fff}
+.comision:nth-child(1) .banda{background:var(--paramo)}
+.comision:nth-child(2) .banda{background:var(--colibri)}
+.comision:nth-child(3) .banda{background:var(--amarillo);color:var(--tinta)}
+.comision:nth-child(3) .tipo{background:rgba(20,36,38,.1)}
+.comision .tipo{display:inline-block;font-size:.8rem;font-weight:700;background:rgba(255,255,255,.18);padding:5px 11px;border-radius:999px}
+.comision h3{margin:12px 0 0;font-variation-settings:"wdth" 110;font-weight:850;font-size:1.45rem;line-height:1.1}
+.comision .cuerpo{padding:20px 24px 24px;display:flex;flex-direction:column;gap:14px;flex:1}
+.comision p{margin:0;color:#33494B}
+.comision ul{margin:0;padding-left:18px;color:#33494B;font-size:.96rem}
+.comision li{margin:3px 0}
+.comision .suyo{background:var(--niebla);border-radius:var(--r-s);padding:12px 14px;font-size:.93rem}
+.comision .suyo b{color:var(--paramo)}
+.comision .fuente{margin-top:auto;font-size:.85rem;color:var(--gris)}
+@media (max-width:980px){.comisiones{grid-template-columns:1fr}}
+
 /* Mapa */
-#mapa{background:var(--paramo);color:#fff;border-radius:var(--r-l);margin:0 12px}
+#mapa{background:var(--paramo);color:#fff;border-radius:var(--r-l);margin:24px 12px 0}
 #mapa .titulo{color:#fff}
 #mapa .entrada{color:var(--menta)}
 .mapa{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:40px;align-items:start}
@@ -283,7 +304,8 @@ footer a{color:#fff}
     <button id="abrir-menu" aria-expanded="false" aria-controls="menu">Menú</button>
     <ul class="menu" id="menu">
       <li><a href="#quien">Quién es</a></li>
-      <li><a href="#mapa">Mapa de Caldas</a></li>
+      <li><a href="#comisiones">Comisiones</a></li>
+      <li><a href="#mapa">Mapa</a></li>
       <li><a href="#agenda">Agenda</a></li>
       <li><a href="#galeria">Galería</a></li>
       <li><a href="#podcast">Podcast</a></li>
@@ -314,7 +336,7 @@ footer a{color:#fff}
   <div class="envoltura">
     <ul class="hechos">
       <li><strong id="n-radicados">8</strong><span>proyectos radicados</span></li>
-      <li><strong>Comisión Primera</strong><span>de la Cámara</span></li>
+      <li><strong>3 comisiones</strong><span>Primera, Afro y seguimiento al terremoto</span></li>
       <li><strong>+20 años</strong><span>en corporaciones públicas de Caldas</span></li>
       <li><strong>2.ª votación</strong><span>del departamento en 2026</span></li>
     </ul>
@@ -339,6 +361,59 @@ footer a{color:#fff}
         <li class="hoy"><span class="anio">2026 – 2030</span><span class="que">Representante a la Cámara por Caldas, partido ASI</span></li>
       </ol>
     </div>
+  </div>
+</section>
+
+<section id="comisiones">
+  <div class="envoltura">
+    <h2 class="titulo">Sus comisiones en el Congreso</h2>
+    <p class="entrada">Además de las sesiones de la plenaria, Manuel trabaja en tres comisiones. Esto es lo que hace cada una.</p>
+    <ul class="comisiones">
+      <li class="comision">
+        <div class="banda"><span class="tipo">Comisión constitucional permanente</span><h3>Comisión Primera de la Cámara</h3></div>
+        <div class="cuerpo">
+          <p>Es la comisión que da el primer debate a las reformas a la Constitución y a las leyes estatutarias. También estudia los proyectos sobre:</p>
+          <ul>
+            <li>Organización territorial y estructura del Estado</li>
+            <li>Derechos, garantías y deberes</li>
+            <li>Organismos de control, rama legislativa y políticas de paz</li>
+            <li>Contratación administrativa, notariado y registro</li>
+            <li>Propiedad intelectual y asuntos étnicos</li>
+          </ul>
+          <p class="suyo"><b>Su trabajo aquí:</b> allí empieza su trámite el Acto Legislativo 244 de 2026, que convierte a Manizales en Distrito Especial del Conocimiento. Desde esta comisión también impulsó la defensa del notariado subsidiado.</p>
+          <p class="fuente">Fuente: <a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=79493" target="_blank" rel="noopener">Ley 3 de 1992, art. 2</a>, modificado por la Ley 754 de 2002.</p>
+        </div>
+      </li>
+      <li class="comision">
+        <div class="banda"><span class="tipo">Comisión legal bicameral</span><h3>Comisión Legal Afrocolombiana</h3></div>
+        <div class="cuerpo">
+          <p>Su nombre completo es Comisión Legal para la Protección de los Derechos de las Comunidades Negras o Población Afrocolombiana. La integran los representantes de la circunscripción afro y los congresistas que deciden sumarse por afinidad. Sus tareas:</p>
+          <ul>
+            <li>Proponer leyes que garanticen los derechos de las comunidades negras</li>
+            <li>Vigilar que el Gobierno cumpla sus compromisos con esta población</li>
+            <li>Hacer seguimiento a las políticas públicas que la protegen</li>
+            <li>Servir de puente entre las comunidades y el Congreso</li>
+            <li>Rendir un informe anual a las plenarias y a la sociedad civil</li>
+          </ul>
+          <p class="fuente">Fuente: <a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=81401" target="_blank" rel="noopener">Ley 1833 de 2017</a>, que creó la comisión.</p>
+        </div>
+      </li>
+      <li class="comision">
+        <div class="banda"><span class="tipo">Comisión accidental bicameral</span><h3>Seguimiento a la atención y reconstrucción tras el terremoto</h3></div>
+        <div class="cuerpo">
+          <p>La creó el Congreso en pleno después del sismo de magnitud 7,4 del 10 de agosto de 2026 y se instaló el 1 de septiembre, con más de 50 congresistas de Cámara y Senado de los departamentos afectados. Hace control político y seguimiento a:</p>
+          <ul>
+            <li>La atención humanitaria a los damnificados</li>
+            <li>La reconstrucción de viviendas</li>
+            <li>La recuperación de vías, colegios y hospitales</li>
+            <li>La reactivación económica de las regiones</li>
+            <li>El uso de los recursos públicos de la emergencia</li>
+          </ul>
+          <p class="suyo"><b>Su trabajo aquí:</b> llevar la voz de Caldas y de Manizales, una de las ciudades más golpeadas, y empujar su proyecto de licencias urbanísticas para agilizar la reconstrucción.</p>
+          <p class="fuente">Fuentes: <a href="https://www.camara.gov.co/presidente-de-la-camara-instalo-comision-bicameral-de-seguimiento-a-la-atencion-del-terremoto/" target="_blank" rel="noopener">Prensa Cámara</a> y <a href="https://www.senado.gov.co/index.php/el-senado/noticias/13-senadores/7557-congreso-le-pone-cronometro-a-la-reconstruccion-tras-el-terremoto" target="_blank" rel="noopener">Prensa Senado</a>, septiembre de 2026.</p>
+        </div>
+      </li>
+    </ul>
   </div>
 </section>
 
