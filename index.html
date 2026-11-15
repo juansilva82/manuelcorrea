@@ -158,6 +158,10 @@ section{padding:96px 0;scroll-margin-top:68px}
 .ley .detalle p{margin:0 0 8px}
 .ley .detalle .con{font-size:.92rem;color:var(--gris)}
 @media (max-width:600px){.ley button{grid-template-columns:minmax(0,1fr) 32px}.ley .estado{grid-row:2;justify-self:start}}
+.descarga{display:inline-flex;align-items:center;gap:8px;margin-top:8px;background:var(--paramo);color:#fff;text-decoration:none;font-weight:700;font-size:.95rem;padding:11px 18px;border-radius:999px}
+.descarga::before{content:"↓";font-weight:900}
+.descarga:hover{background:var(--colibri)}
+.ver-pdf{display:inline-block;margin:8px 0 0 12px;font-weight:600;font-size:.92rem}
 .nota-agenda{font-size:.9rem;color:var(--gris);margin-top:20px}
 
 /* Galería */
@@ -537,7 +541,7 @@ footer a{color:#fff}
   var SUB_DE = {};
   Object.keys(SUBREGIONES).forEach(function(s){ SUBREGIONES[s].m.forEach(function(m){ SUB_DE[m]=s; }); });
   var PROYECTOS_MUNI = {
-    "Distrito": {t:"Distrito Especial del Conocimiento", d:"Radicado · Manizales como distrito; la subregión Centro Sur podrá beneficiarse"},
+    "Distrito": {t:"Distrito Especial del Conocimiento", d:"Acto Legislativo 244 de 2026 · Manizales como distrito; el Centro Sur podrá beneficiarse"},
     "Minero": {t:"Paisaje Cultural Minero", d:"Radicado · Marmato, Supía y Riosucio"},
     "Palma": {t:"Corredor de la Palma de Cera", d:"Radicado · piloto en Salamina, Marulanda y Marquetalia"},
     "Ovejero": {t:"Paisaje Cultural Ovejero de Marulanda", d:"En preparación · 150 años del municipio en 2027"},
@@ -614,20 +618,20 @@ footer a{color:#fff}
 
   /* ---------- Agenda legislativa ---------- */
   var LEYES = [
-    {t:"Distrito Especial del Conocimiento, la Sostenibilidad y la Innovación", eje:"Territorio y patrimonio", e:"radicado", f:"Septiembre de 2026",
-     d:"Declara a Manizales distrito especial para consolidarla como polo de ciencia, tecnología, innovación y sostenibilidad, con la posibilidad de que los municipios de la subregión Centro Sur se beneficien de lo que reglamente la ley.", con:"Con el senador Wilder Escobar."},
+    {t:"Distrito Especial del Conocimiento, la Sostenibilidad y la Innovación", eje:"Territorio y patrimonio", e:"radicado", f:"18 de agosto de 2026", num:"Proyecto de Acto Legislativo 244 de 2026 Cámara",
+     d:"Reforma constitucional que organiza a Manizales como Distrito Especial del Conocimiento, la Sostenibilidad y la Innovación. Los municipios del Área Metropolitana del Centro Sur y otros de Caldas podrán beneficiarse de sus incentivos según la ley que lo reglamente, sin afectar su autonomía.", con:"Con el senador Wilder Escobar.", pdf:"docs/PAL-244-2026-distrito-especial-conocimiento-manizales.pdf", peso:"3,7 MB", pags:20},
     {t:"Paisaje Cultural Minero de Marmato, Supía y Riosucio", eje:"Territorio y patrimonio", e:"radicado", f:"Septiembre de 2026",
      d:"Reconoce la tradición minera de estos municipios como patrimonio histórico y cultural, y abre caminos para la formalización y el fortalecimiento de la pequeña minería."},
-    {t:"Corredor de la Palma de Cera", eje:"Ambiente", e:"radicado", f:"Noviembre de 2026",
+    {t:"Corredor de la Palma de Cera", eje:"Ambiente", e:"radicado", f:"4 de noviembre de 2026", pdf:"docs/PL-palma-de-cera-radicado.pdf", peso:"2,5 MB", pags:14,
      d:"Modifica la Ley 61 de 1985 para que el país identifique y conserve corredores de su árbol nacional. Arranca con un piloto en Salamina, Marulanda y Marquetalia, con centro de interpretación en Salamina y acceso prioritario a obras por impuestos y al Fondo para la Vida y la Biodiversidad.", con:"Con el senador Wilder Escobar."},
     {t:"Licencias urbanísticas para la reconstrucción", eje:"Reconstrucción", e:"radicado", f:"Septiembre de 2026",
      d:"Agiliza los trámites de licencias en las zonas afectadas por el sismo de 2026 y plantea exonerar algunos pagos, para que las familias reconstruyan sus viviendas más rápido."},
     {t:"Reforma a CoCrea", eje:"Cultura y economía", e:"radicado", f:"Septiembre de 2026",
      d:"Fortalece los incentivos tributarios para quienes invierten en la economía cultural y creativa, con un cupo reservado para proyectos fuera de Bogotá."},
-    {t:"Inversión en Cultura", eje:"Cultura y economía", e:"radicado", f:"Noviembre de 2026",
-     d:"Mejora los beneficios tributarios para empresas que invierten o donan en cine y cultura, con un tratamiento diferencial para las regiones.", con:"Con el senador Wilder Escobar."},
-    {t:"Sabores de Colombia", eje:"Cultura y economía", e:"radicado", f:"Noviembre de 2026",
-     d:"Política pública para proteger la cocina tradicional y respaldar a los productores del campo, con una estrategia especial para las frutas colombianas y una gran feria y congreso nacional.", con:"Con el senador Wilder Escobar."},
+    {t:"Inversión en Cultura: incentivo tributario a proyectos culturales", eje:"Cultura y economía", e:"radicado", f:"4 de noviembre de 2026",
+     d:"Modifica el artículo 180 de la Ley 1955 de 2019 (modificado por el artículo 27 de la Ley 2277 de 2022) para fortalecer el incentivo tributario a la inversión y donación en proyectos culturales.", con:"Con el senador Wilder Escobar.", pdf:"docs/PL-incentivo-inversion-donacion-cultura-radicado.pdf", peso:"1,4 MB", pags:25},
+    {t:"Sabores de Colombia", eje:"Cultura y economía", e:"radicado", f:"4 de noviembre de 2026",
+     d:"Fortalece la gastronomía colombiana y la oferta frutícola como patrimonio cultural y motor de desarrollo. Crea la Estrategia Nacional Sabores de Colombia y el Programa Nacional Colombia, País de las Frutas, con énfasis en las comunidades campesinas; adopta la línea ¿A qué sabe Colombia? e institucionaliza la Gran Feria y Congreso Nacional de los Sabores de Colombia.", con:"Con el senador Wilder Escobar.", pdf:"docs/PL-sabores-de-colombia-radicado.pdf", peso:"3,0 MB", pags:32},
     {t:"Fondo Nacional del Comercio (FONACOMER)", eje:"Cultura y economía", e:"radicado", f:"2026",
      d:"Crea un fondo para fortalecer el comercio, financiado con un incentivo tributario a los aportes de las empresas.", con:"Con el senador Wilder Escobar."},
     {t:"Notariado subsidiado en el Presupuesto 2027", eje:"Cultura y economía", e:"gestion", f:"Octubre de 2026",
@@ -663,8 +667,9 @@ footer a{color:#fff}
     LEYES.filter(function(l){ return eje==="Todos" || l.eje===eje; }).forEach(function(l, i){
       var li = document.createElement("li"); li.className = "ley"; var id = "ley-" + i + "-" + eje.length;
       li.innerHTML = '<button type="button" aria-expanded="false" aria-controls="'+id+'"><span><h3>'+esc(l.t)+'</h3><span class="eje">'+esc(l.eje)+(l.f? " · "+esc(l.f):"")+'</span></span>'+
-        '<span class="estado '+l.e+'">'+NOMBRE_ESTADO[l.e]+'</span><span class="mas" aria-hidden="true">+</span></button>'+
-        '<div class="detalle" id="'+id+'"><p>'+esc(l.d)+'</p>'+(l.con? '<p class="con">'+esc(l.con)+'</p>':'')+'</div>';
+        '<span class="estado '+l.e+'">'+NOMBRE_ESTADO[l.e]+(l.pdf? ' · PDF':'')+'</span><span class="mas" aria-hidden="true">+</span></button>'+
+        '<div class="detalle" id="'+id+'">'+(l.num? '<p class="con"><strong>'+esc(l.num)+'</strong></p>':'')+'<p>'+esc(l.d)+'</p>'+(l.con? '<p class="con">'+esc(l.con)+'</p>':'')+
+        (l.pdf? '<a class="descarga" href="'+l.pdf+'" download>Descargar el proyecto radicado (PDF, '+l.pags+' págs., '+l.peso+')</a> <a class="ver-pdf" href="'+l.pdf+'" target="_blank" rel="noopener">Verlo en el navegador</a>':'')+'</div>';
       var b = li.querySelector("button");
       b.addEventListener("click", function(){ var ab = li.hasAttribute("open"); if (ab) li.removeAttribute("open"); else li.setAttribute("open",""); b.setAttribute("aria-expanded", String(!ab)); });
       lista.appendChild(li);
