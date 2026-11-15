@@ -132,8 +132,10 @@ section{padding:96px 0;scroll-margin-top:68px}
 
 /* Comisiones */
 #comisiones{background:var(--niebla)}
-.comisiones{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;list-style:none;margin:0;padding:0}
-.comision{background:#fff;border-radius:var(--r-l);overflow:hidden;display:flex;flex-direction:column}
+.comisiones{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;list-style:none;margin:0;padding:0}
+.comision{background:#fff;border-radius:var(--r-l);overflow:hidden;display:flex;flex-direction:column;grid-column:span 2}
+.comision:nth-child(n+4){grid-column:span 3}
+.comision:nth-child(5) .banda{background:var(--hondo)}
 .comision .banda{padding:22px 24px 18px;color:#fff}
 .comision:nth-child(1) .banda{background:var(--paramo)}
 .comision:nth-child(2) .banda{background:var(--colibri)}
@@ -149,7 +151,8 @@ section{padding:96px 0;scroll-margin-top:68px}
 .comision .suyo{background:var(--niebla);border-radius:var(--r-s);padding:12px 14px;font-size:.93rem}
 .comision .suyo b{color:var(--paramo)}
 .comision .fuente{margin-top:auto;font-size:.85rem;color:var(--gris)}
-@media (max-width:860px){.comisiones{grid-template-columns:1fr}}
+@media (max-width:1100px){.comisiones{grid-template-columns:1fr 1fr}.comision,.comision:nth-child(n+4){grid-column:auto}.comision:nth-child(5){grid-column:1/-1}}
+@media (max-width:760px){.comisiones{grid-template-columns:1fr}}
 
 /* Mapa */
 #mapa{background:var(--paramo);color:#fff;border-radius:var(--r-l);margin:24px 12px 0}
@@ -360,7 +363,7 @@ footer a{color:#fff}
   <div class="envoltura">
     <ul class="hechos">
       <li><strong id="n-radicados">8</strong><span>proyectos radicados</span></li>
-      <li><strong>4 comisiones</strong><span>Primera, Afro, seguimiento al terremoto y Pro Fuerza Pública</span></li>
+      <li><strong>5 comisiones</strong><span>Primera, Afro, Víctimas, terremoto y Pro Fuerza Pública</span></li>
       <li><strong>+20 años</strong><span>en corporaciones públicas de Caldas</span></li>
       <li><strong>2.ª votación</strong><span>del departamento en 2026</span></li>
     </ul>
@@ -391,7 +394,7 @@ footer a{color:#fff}
 <section id="comisiones">
   <div class="envoltura">
     <h2 class="titulo">Sus comisiones en el Congreso</h2>
-    <p class="entrada">Además de las sesiones de la plenaria, Manuel trabaja en cuatro comisiones. Esto es lo que hace cada una.</p>
+    <p class="entrada">Además de las sesiones de la plenaria, Manuel trabaja en cinco comisiones. Esto es lo que hace cada una.</p>
     <ul class="comisiones">
       <li class="comision">
         <div class="banda"><span class="tipo">Comisión constitucional permanente</span><h3>Comisión Primera de la Cámara</h3></div>
@@ -449,6 +452,21 @@ footer a{color:#fff}
           </ul>
           <p class="suyo"><b>Su trabajo aquí:</b> Manuel se integró a esta comisión en noviembre de 2026.</p>
           <p class="fuente">Fuente: <a href="https://www.camara.gov.co/compromiso-de-la-comision-pro-fuerza-publica-con-la-democracia-y-los-veteranos/" target="_blank" rel="noopener">Prensa Cámara</a>, mayo de 2025.</p>
+        </div>
+      </li>
+      <li class="comision">
+        <div class="banda"><span class="tipo">Comisión de seguimiento creada por ley</span><h3>Seguimiento a la Ley de Víctimas y Restitución de Tierras</h3></div>
+        <div class="cuerpo">
+          <p>La creó el artículo 202 de la Ley 1448 de 2011 y la integran congresistas de las Comisiones Primeras de Senado y Cámara. Su coordinador en la Cámara es el representante James Mosquera. Sus tareas:</p>
+          <ul>
+            <li>Vigilar que la Ley de Víctimas se aplique en los territorios</li>
+            <li>Recibir las quejas de las víctimas</li>
+            <li>Revisar los informes que se le piden al Gobierno Nacional</li>
+            <li>Proponer cambios a la ley cuando haga falta</li>
+            <li>Hacer seguimiento a los procesos de restitución de tierras</li>
+          </ul>
+          <p class="suyo"><b>Su trabajo aquí:</b> llega a esta comisión como integrante de la Comisión Primera, para que la reparación y la restitución también lleguen a las víctimas de Caldas.</p>
+          <p class="fuente">Fuente: <a href="https://www.camara.gov.co/victimas-y-restitucion-de-tierras/" target="_blank" rel="noopener">Cámara de Representantes</a> y <a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=43043" target="_blank" rel="noopener">Ley 1448 de 2011</a>.</p>
         </div>
       </li>
     </ul>
