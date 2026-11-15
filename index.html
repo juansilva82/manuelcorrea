@@ -86,8 +86,11 @@ a{color:var(--colibri)}
   .hero .envoltura{grid-template-columns:1fr;gap:36px;padding-top:48px;padding-bottom:56px}
   .muro-nota{grid-column:1;margin-top:-20px}
 }
-.hero .entra{opacity:0;transform:translateY(8px);animation:entra .7s ease-out forwards}
-.muro button{opacity:0;animation:aparece .5s ease-out forwards}
+@media (prefers-reduced-motion:no-preference){
+  .hero .entra{opacity:0;transform:translateY(8px);animation:entra .7s ease-out forwards}
+  .muro button{opacity:0;animation:aparece .5s ease-out forwards}
+}
+.muro button{opacity:var(--o,1)}
 @keyframes entra{to{opacity:1;transform:none}}
 @keyframes aparece{to{opacity:var(--o,1)}}
 
