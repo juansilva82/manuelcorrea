@@ -175,6 +175,33 @@ dialog#visor::backdrop{background:rgba(10,52,56,.88)}
 #visor p{color:#fff;text-align:center;margin:12px 0 0;font-weight:600}
 #visor .cerrar{position:fixed;top:16px;right:16px;font:inherit;font-weight:700;background:#fff;color:var(--paramo);border:0;border-radius:999px;padding:10px 16px;cursor:pointer}
 
+
+/* Podcast */
+#podcast{background:var(--hondo);color:#fff;border-radius:var(--r-l);margin:0 12px}
+#podcast .titulo{color:#fff}
+#podcast .entrada{color:var(--menta)}
+.podcast{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:40px;align-items:start}
+.portada{position:relative;border-radius:var(--r-l);overflow:hidden;aspect-ratio:1;background:var(--paramo)}
+.portada img{width:100%;height:100%;object-fit:cover;opacity:.55;filter:grayscale(.2)}
+.portada .sobre{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:26px;background:linear-gradient(transparent 35%,rgba(10,52,56,.95))}
+.portada .sobre b{font-variation-settings:"wdth" 120;font-weight:900;font-size:clamp(2.2rem,4vw,3.2rem);line-height:.9;letter-spacing:-.02em}
+.portada .sobre span{color:var(--menta);margin-top:10px}
+.onda{display:flex;align-items:flex-end;gap:4px;height:34px;margin-bottom:16px}
+.onda i{width:6px;border-radius:3px;background:var(--amarillo);display:block}
+.episodios{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.episodio{background:rgba(255,255,255,.06);border:1px solid rgba(191,230,214,.15);border-radius:var(--r-m);padding:20px}
+.episodio .num{font-size:.85rem;color:var(--amarillo);font-weight:700}
+.episodio h3{margin:4px 0 6px;font-size:1.2rem;line-height:1.25}
+.episodio p{margin:0 0 14px;color:var(--menta);font-size:.95rem}
+.episodio iframe{width:100%;border:0;border-radius:12px;display:block}
+.vacio{background:rgba(255,255,255,.06);border:1.5px dashed rgba(191,230,214,.35);border-radius:var(--r-m);padding:32px}
+.vacio h3{margin:0 0 8px;font-size:1.4rem}
+.vacio p{margin:0 0 20px;color:var(--menta);max-width:52ch}
+.plataformas{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.plataformas a{color:#fff;text-decoration:none;font-weight:600;font-size:.92rem;padding:9px 16px;border-radius:999px;border:1.5px solid rgba(191,230,214,.35)}
+.plataformas a:hover{background:#fff;color:var(--paramo)}
+@media (max-width:900px){.podcast{grid-template-columns:1fr}.portada{max-width:380px}#podcast{margin:0}}
+
 /* Participa */
 .participa{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:40px;align-items:start}
 .pestanas{display:inline-flex;gap:4px;background:var(--niebla);padding:5px;border-radius:999px;margin-bottom:16px;flex-wrap:wrap}
@@ -255,6 +282,7 @@ footer a{color:#fff}
       <li><a href="#mapa">Mapa de Caldas</a></li>
       <li><a href="#agenda">Agenda</a></li>
       <li><a href="#galeria">Galería</a></li>
+      <li><a href="#podcast">Podcast</a></li>
       <li><a href="#noticias">Noticias</a></li>
       <li><a class="cta" href="#participa">Participa</a></li>
     </ul>
@@ -344,6 +372,27 @@ footer a{color:#fff}
   </div>
 </section>
 <dialog id="visor" aria-label="Foto ampliada"><button class="cerrar" type="button">Cerrar</button><img alt=""><p></p></dialog>
+
+<section id="podcast">
+  <div class="envoltura">
+    <h2 class="titulo">Podcast</h2>
+    <p class="entrada">Conversaciones sobre lo que pasa en el Congreso y lo que necesita Caldas, contadas sin tecnicismos.</p>
+    <div class="podcast">
+      <div class="portada">
+        <img src="img/debate.jpg" alt="" loading="lazy">
+        <div class="sobre">
+          <div class="onda" aria-hidden="true"><i style="height:40%"></i><i style="height:75%"></i><i style="height:55%"></i><i style="height:100%"></i><i style="height:65%"></i><i style="height:85%"></i><i style="height:45%"></i><i style="height:70%"></i><i style="height:30%"></i></div>
+          <b>Manuel Correa<br>al aire</b>
+          <span>Desde Caldas, para el Congreso</span>
+        </div>
+      </div>
+      <div>
+        <ul class="episodios" id="episodios"></ul>
+        <div class="plataformas" id="plataformas"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="participa">
   <div class="envoltura">
@@ -660,6 +709,41 @@ footer a{color:#fff}
     t.addEventListener("click", function(){ activarPestana(t.id.slice(2)); });
     t.addEventListener("keydown", function(e){ var d = e.key==="ArrowRight" ? 1 : e.key==="ArrowLeft" ? -1 : 0; if (!d) return; var n = tabs[(i + d + tabs.length) % tabs.length]; activarPestana(n.id.slice(2)); n.focus(); });
   });
+
+
+  /* ---------- Podcast ----------
+     Para publicar un episodio, agrégalo aquí (el más reciente primero).
+     spotify: el enlace del episodio en Spotify; youtube: el enlace del video. Basta con uno. */
+  var EPISODIOS = [
+    // {t:"Título del episodio", fecha:"2026-11-20", d:"De qué se habla", spotify:"https://open.spotify.com/episode/...", youtube:""}
+  ];
+  var PLATAFORMAS = [
+    // ["Spotify","https://open.spotify.com/show/..."], ["YouTube","https://www.youtube.com/@..."]
+  ];
+  (function(){
+    var ul = document.getElementById("episodios");
+    function embed(e){
+      var m;
+      if (e.spotify && (m = e.spotify.match(/open\.spotify\.com\/(episode|show)\/([A-Za-z0-9]+)/)))
+        return '<iframe src="https://open.spotify.com/embed/'+m[1]+'/'+m[2]+'" height="152" loading="lazy" allow="encrypted-media" title="'+esc(e.t)+'"></iframe>';
+      if (e.youtube && (m = e.youtube.match(/(?:youtu\.be\/|v=|shorts\/|live\/)([A-Za-z0-9_-]{11})/)))
+        return '<iframe src="https://www.youtube-nocookie.com/embed/'+m[1]+'" style="aspect-ratio:16/9;height:auto" loading="lazy" allowfullscreen title="'+esc(e.t)+'"></iframe>';
+      return "";
+    }
+    if (!EPISODIOS.length){
+      ul.outerHTML = '<div class="vacio"><h3>El primer episodio viene en camino</h3><p>Suscríbete al boletín y te avisamos por correo cuando salga.</p><a class="boton amarillo" href="#participa" id="pod-cta">Avísame del primer episodio</a></div>';
+      document.getElementById("pod-cta").addEventListener("click", function(){ activarPestana("boletin"); });
+    } else {
+      EPISODIOS.forEach(function(e, i){
+        var li = document.createElement("li"); li.className = "episodio";
+        var f = e.fecha ? new Date(e.fecha+"T12:00:00").toLocaleDateString("es-CO",{day:"numeric",month:"long",year:"numeric"}) : "";
+        li.innerHTML = '<span class="num">Episodio '+(EPISODIOS.length - i)+(f ? " · "+f : "")+'</span><h3>'+esc(e.t)+'</h3>'+(e.d ? '<p>'+esc(e.d)+'</p>' : '')+embed(e);
+        ul.appendChild(li);
+      });
+    }
+    var pl = document.getElementById("plataformas");
+    PLATAFORMAS.forEach(function(p){ var a = document.createElement("a"); a.href = p[1]; a.target = "_blank"; a.rel = "noopener"; a.textContent = "Escúchalo en " + p[0]; pl.appendChild(a); });
+  })();
 
   /* ---------- Envío de formularios ---------- */
   function leerDemo(){ try { return JSON.parse(localStorage.getItem("mc_demo") || "[]"); } catch(e){ return []; } }
