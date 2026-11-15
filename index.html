@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manuel Correa · Representante a la Cámara por Caldas</title>
+<meta name="description" content="Manuel Orlando Correa Bedoya, Representante a la Cámara por Caldas 2026-2030. Agenda legislativa, rendición de cuentas y participación ciudadana de los 27 municipios.">
+<meta property="og:title" content="Manuel Correa · Representante a la Cámara por Caldas">
+<meta property="og:description" content="Agenda legislativa con enfoque territorial. Cuéntale qué necesita tu municipio.">
+<meta name="theme-color" content="#0E4A4F">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E4A4F'/%3E%3Cpath d='M12 30c8-2 16 0 22 6l18-16-10 20c-4 8-14 10-20 4 6 0 10-3 12-7-8 3-16 0-22-7z' fill='%23BFE6D6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,400&display=swap" rel="stylesheet">
+<script src="config.js"></script>
+<style>
+:root{
+  --paramo:#0E4A4F;      /* verde páramo, base institucional */
+  --paramo-hondo:#0A3438;
+  --colibri:#1F8A84;     /* verde azulado del colibrí */
+  --menta:#BFE6D6;
+  --niebla:#F2F6F4;      /* fondo claro, frío */
+  --tinta:#17282A;
+  --guadua:#E2B33C;      /* solo para estados "radicado" */
+  --gris:#5B6E6F;
+  --linea:#D5E2DD;
+  --r-s:6px; --r-m:14px;
+  --ancho:1180px;
+  --f: "Archivo", "Inter", system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;font-family:var(--f);font-variation-settings:"wdth" 100;color:var(--tinta);background:var(--niebla);font-size:1.0625rem;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--colibri)}
+:focus-visible{outline:3px solid var(--guadua);outline-offset:3px;border-radius:4px}
+.envoltura{max-width:var(--ancho);margin:0 auto;padding:0 24px}
+.salto{position:absolute;left:-999px;top:0;background:#fff;padding:8px 12px;z-index:99}
+.salto:focus{left:12px;top:12px}
+
+/* Aviso de modo demostración */
+#demo{background:var(--guadua);color:var(--tinta);font-size:.875rem;text-align:center;padding:6px 16px}
+#demo[hidden]{display:none}
+
+/* Barra superior */
+.barra{position:sticky;top:0;z-index:20;background:rgba(14,74,79,.96);backdrop-filter:blur(6px);color:#fff}
+.barra .envoltura{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.marca{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
+.marca svg{width:34px;height:34px;flex:none}
+.marca b{font-variation-settings:"wdth" 112;font-weight:800;font-size:1.05rem;letter-spacing:-.01em;line-height:1}
+.marca small{display:block;font-weight:400;font-size:.75rem;color:var(--menta);margin-top:3px}
+.menu{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+.menu a{color:#fff;text-decoration:none;font-size:.95rem;padding:8px 12px;border-radius:999px}
+.menu a:hover{background:rgba(255,255,255,.1)}
+.menu .cta{background:var(--menta);color:var(--paramo);font-weight:700}
+.menu .cta:hover{background:#fff}
+#abrir-menu{display:none;background:none;border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:8px;padding:8px 12px;font:inherit}
+@media (max-width:860px){
+  #abrir-menu{display:block}
+  .marca small{display:none}
+  .menu{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--paramo);padding:12px 24px 20px}
+  .menu.abierto{display:flex}
+}
+
+/* HERO: el muro de los 27 municipios */
+.hero{background:var(--paramo);color:#fff;position:relative;overflow:hidden}
+.hero .envoltura{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:48px;padding-top:72px;padding-bottom:80px;align-items:center}
+.hero h1{margin:0;font-variation-settings:"wdth" 118;font-weight:850;font-size:clamp(2.8rem,6.4vw,5.4rem);line-height:.92;letter-spacing:-.03em}
+.hero .cargo{margin:18px 0 0;font-size:1.15rem;color:var(--menta)}
+.hero .lema{margin:28px 0 0;font-size:clamp(1.25rem,2.2vw,1.6rem);line-height:1.3;max-width:22ch;font-weight:400}
+.botones{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.boton{display:inline-flex;align-items:center;gap:8px;font:inherit;font-weight:700;font-size:1rem;padding:14px 22px;border-radius:999px;border:2px solid transparent;text-decoration:none;cursor:pointer}
+.boton.lleno{background:var(--menta);color:var(--paramo)}
+.boton.lleno:hover{background:#fff}
+.boton.borde{border-color:rgba(255,255,255,.5);color:#fff;background:transparent}
+.boton.borde:hover{border-color:#fff}
+.muro{display:flex;flex-wrap:wrap;gap:2px 14px;align-content:center;line-height:1}
+.muro button{all:unset;cursor:pointer;font-family:var(--f);font-variation-settings:"wdth" 66;font-weight:700;color:var(--menta);letter-spacing:-.01em;padding:4px 0;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+.muro button:hover,.muro button:focus-visible{color:#fff;border-bottom-color:var(--guadua);outline:none}
+.muro .t1{font-size:clamp(1.9rem,3.6vw,3.1rem);opacity:1}
+.muro .t2{font-size:clamp(1.4rem,2.6vw,2.2rem);opacity:.78}
+.muro .t3{font-size:clamp(1.1rem,1.9vw,1.6rem);opacity:.6}
+.muro-nota{grid-column:2;margin:-28px 0 0;font-size:.9rem;color:var(--menta);opacity:.85}
+@media (max-width:860px){
+  .hero .envoltura{grid-template-columns:1fr;gap:36px;padding-top:48px;padding-bottom:56px}
+  .muro-nota{grid-column:1;margin-top:-20px}
+}
+.hero .entra{opacity:0;transform:translateY(8px);animation:entra .7s ease-out forwards}
+.muro button{opacity:0;animation:aparece .5s ease-out forwards}
+@keyframes entra{to{opacity:1;transform:none}}
+@keyframes aparece{to{opacity:var(--o,1)}}
+
+/* Franja de hechos */
+.hechos{background:var(--paramo-hondo);color:#fff}
+.hechos ul{list-style:none;margin:0;padding:22px 24px;display:flex;flex-wrap:wrap;gap:12px 40px;max-width:var(--ancho);margin:0 auto}
+.hechos li{font-size:.98rem;color:var(--menta)}
+.hechos strong{color:#fff;font-variation-settings:"wdth" 112;font-weight:800;font-size:1.25rem;margin-right:6px}
+
+/* Secciones */
+section{padding:88px 0}
+.titulo{font-variation-settings:"wdth" 112;font-weight:800;font-size:clamp(2rem,4vw,3rem);line-height:1.02;letter-spacing:-.02em;margin:0 0 12px;color:var(--paramo)}
+.entrada{font-size:1.15rem;color:var(--gris);max-width:62ch;margin:0 0 40px}
+
+/* Quién es */
+.quien{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:56px;align-items:start}
+.foto{aspect-ratio:4/5;border-radius:var(--r-m);background:var(--paramo) center/cover;position:relative;overflow:hidden}
+.foto img{width:100%;height:100%;object-fit:cover}
+.foto .sin-foto{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;color:var(--menta);font-size:.9rem;background:linear-gradient(160deg,var(--colibri),var(--paramo))}
+.foto .sin-foto span{font-variation-settings:"wdth" 125;font-weight:900;font-size:5rem;line-height:.9;color:#fff;opacity:.9;margin-bottom:12px}
+.bio p{max-width:64ch;margin:0 0 16px}
+.trayectoria{list-style:none;margin:36px 0 0;padding:0;border-left:2px solid var(--linea)}
+.trayectoria li{position:relative;padding:0 0 22px 26px}
+.trayectoria li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--niebla);border:2px solid var(--colibri)}
+.trayectoria li.hoy::before{background:var(--colibri)}
+.trayectoria .anio{font-variation-settings:"wdth" 80;font-weight:700;color:var(--colibri);font-size:.95rem}
+.trayectoria .que{display:block;font-weight:600;font-size:1.05rem}
+@media (max-width:860px){.quien{grid-template-columns:1fr;gap:32px}.foto{max-width:360px}}
+
+/* Agenda legislativa */
+#agenda{background:#fff}
+.filtros{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px}
+.filtros button{font:inherit;font-size:.95rem;padding:8px 16px;border-radius:999px;border:1.5px solid var(--linea);background:#fff;color:var(--tinta);cursor:pointer}
+.filtros button[aria-pressed="true"]{background:var(--paramo);border-color:var(--paramo);color:#fff}
+.leyes{list-style:none;margin:0;padding:0;border-top:1px solid var(--linea)}
+.ley{border-bottom:1px solid var(--linea)}
+.ley button{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto 28px;gap:20px;align-items:center;padding:20px 4px}
+.ley button:focus-visible{outline:3px solid var(--guadua);outline-offset:-3px}
+.ley h3{margin:0;font-size:1.2rem;font-weight:700;line-height:1.25}
+.ley .eje{display:block;font-size:.88rem;color:var(--gris);font-weight:400;margin-top:4px}
+.estado{font-size:.82rem;font-weight:700;padding:5px 12px;border-radius:999px;white-space:nowrap}
+.estado.radicado{background:var(--guadua);color:var(--tinta)}
+.estado.prep{background:var(--menta);color:var(--paramo)}
+.estado.gestion{background:var(--niebla);color:var(--paramo);border:1px solid var(--linea)}
+.ley .mas{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--linea);display:grid;place-items:center;color:var(--colibri);font-weight:700;transition:transform .2s}
+.ley[open] .mas{transform:rotate(45deg)}
+.ley .detalle{display:none;padding:0 4px 24px;max-width:72ch;color:#33494B}
+.ley[open] .detalle{display:block}
+.ley .detalle p{margin:0 0 8px}
+.ley .detalle .con{font-size:.92rem;color:var(--gris)}
+@media (max-width:600px){.ley button{grid-template-columns:minmax(0,1fr) 28px}.ley .estado{grid-row:2;justify-self:start}}
+.nota-agenda{font-size:.9rem;color:var(--gris);margin-top:20px}
+
+/* Participa */
+#participa{background:var(--niebla)}
+.participa{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:48px;align-items:start}
+.pestanas{display:flex;gap:6px;margin-bottom:0;flex-wrap:wrap}
+.pestanas button{font:inherit;font-weight:700;padding:12px 20px;border:0;border-radius:var(--r-m) var(--r-m) 0 0;background:transparent;color:var(--gris);cursor:pointer}
+.pestanas button[aria-selected="true"]{background:#fff;color:var(--paramo)}
+.panel{background:#fff;border-radius:0 var(--r-m) var(--r-m) var(--r-m);padding:32px}
+.panel[hidden]{display:none}
+.panel p.intro{margin:0 0 24px;color:var(--gris);max-width:56ch}
+.campos{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.campo{display:flex;flex-direction:column;gap:6px}
+.campo.ancho{grid-column:1/-1}
+label,.campo legend{font-weight:600;font-size:.95rem}
+.opcional{font-weight:400;color:var(--gris)}
+input,select,textarea{font:inherit;font-size:1rem;padding:12px 14px;border:1.5px solid var(--linea);border-radius:var(--r-s);background:#fff;color:var(--tinta);width:100%}
+input:focus,select:focus,textarea:focus{border-color:var(--colibri);outline:2px solid var(--menta);outline-offset:0}
+textarea{min-height:140px;resize:vertical}
+fieldset{border:0;margin:0;padding:0}
+.opciones{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.opciones label{display:flex;align-items:center;gap:8px;font-weight:400;padding:8px 14px;border:1.5px solid var(--linea);border-radius:999px;cursor:pointer}
+.opciones input{width:auto;accent-color:var(--colibri)}
+.autoriza{display:flex;gap:12px;align-items:flex-start;font-weight:400;font-size:.92rem;color:#33494B;grid-column:1/-1;background:var(--niebla);padding:14px 16px;border-radius:var(--r-s)}
+.autoriza input{width:20px;height:20px;flex:none;margin-top:2px;accent-color:var(--colibri)}
+.trampa{position:absolute;left:-5000px;width:1px;height:1px;overflow:hidden}
+.enviar{margin-top:24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.enviar .boton{background:var(--paramo);color:#fff}
+.enviar .boton:hover{background:var(--colibri)}
+.enviar .boton[disabled]{opacity:.6;cursor:wait}
+.estado-envio{font-size:.95rem}
+.estado-envio.ok{color:#17683B;font-weight:600}
+.estado-envio.error{color:#A3302A;font-weight:600}
+@media (max-width:860px){.participa{grid-template-columns:1fr}.campos{grid-template-columns:1fr}.panel{padding:22px}}
+
+.cifras-publicas{background:var(--paramo);color:#fff;border-radius:var(--r-m);padding:28px}
+.cifras-publicas h3{margin:0 0 4px;font-variation-settings:"wdth" 112;font-size:1.3rem}
+.cifras-publicas p{margin:0 0 20px;color:var(--menta);font-size:.92rem}
+.cifras-publicas dl{margin:0;display:grid;gap:16px}
+.cifras-publicas div{border-top:1px solid rgba(191,230,214,.25);padding-top:14px}
+.cifras-publicas dt{font-size:.92rem;color:var(--menta)}
+.cifras-publicas dd{margin:0;font-variation-settings:"wdth" 118;font-weight:850;font-size:2.4rem;line-height:1}
+.cifras-publicas small{display:block;margin-top:18px;color:var(--menta);font-size:.8rem;opacity:.8}
+
+/* Noticias */
+.noticias{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0 32px}
+.noticias li{border-top:2px solid var(--paramo);padding:18px 0 28px}
+.noticias time{font-size:.88rem;color:var(--gris)}
+.noticias a{display:block;color:var(--tinta);text-decoration:none;font-weight:700;font-size:1.12rem;line-height:1.3;margin-top:6px}
+.noticias a:hover{color:var(--colibri);text-decoration:underline}
+.noticias .fuente{font-size:.85rem;color:var(--gris);margin-top:8px}
+
+/* Contacto y pie */
+#contacto{background:#fff}
+.contacto{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px}
+.contacto h3{margin:0 0 6px;font-size:1rem;color:var(--gris);font-weight:600}
+.contacto p{margin:0;font-size:1.15rem;font-weight:600}
+footer{background:var(--paramo-hondo);color:var(--menta);font-size:.9rem;padding:36px 0}
+footer .envoltura{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
+footer a{color:#fff}
+</style>
+</head>
+<body>
+<a class="salto" href="#contenido">Ir al contenido</a>
+<div id="demo" hidden role="status">Modo demostración: los formularios funcionan, pero lo enviado se guarda solo en este navegador.</div>
+
+<header class="barra">
+  <div class="envoltura">
+    <a class="marca" href="#inicio" aria-label="Manuel Correa, inicio">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1F8A84"/><path d="M12 30c8-2 16 0 22 6l18-16-10 20c-4 8-14 10-20 4 6 0 10-3 12-7-8 3-16 0-22-7z" fill="#BFE6D6"/><circle cx="41" cy="27" r="1.8" fill="#0E4A4F"/></svg>
+      <span><b>Manuel Correa</b><small>Representante a la Cámara por Caldas</small></span>
+    </a>
+    <button id="abrir-menu" aria-expanded="false" aria-controls="menu">Menú</button>
+    <ul class="menu" id="menu">
+      <li><a href="#quien">Quién es</a></li>
+      <li><a href="#agenda">Agenda legislativa</a></li>
+      <li><a href="#noticias">Noticias</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+      <li><a class="cta" href="#participa">Participa</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="contenido">
+<div class="hero" id="inicio">
+  <div class="envoltura">
+    <div>
+      <h1 class="entra">Manuel<br>Correa</h1>
+      <p class="cargo entra" style="animation-delay:.1s">Representante a la Cámara por Caldas · 2026–2030</p>
+      <p class="lema entra" style="animation-delay:.2s">Que las regiones vuelvan a ser prioridad en el Congreso.</p>
+      <div class="botones entra" style="animation-delay:.3s">
+        <a class="boton lleno" href="#participa">Cuéntanos qué necesita tu municipio</a>
+        <a class="boton borde" href="#agenda">Ver la agenda legislativa</a>
+      </div>
+    </div>
+    <div class="muro" id="muro" aria-label="Los 27 municipios de Caldas. Elige el tuyo para enviar una propuesta."></div>
+    <p class="muro-nota">Los 27 municipios de Caldas. Toca el tuyo para enviarnos una propuesta.</p>
+  </div>
+</div>
+
+<div class="hechos">
+  <ul>
+    <li><strong>27</strong>municipios representados</li>
+    <li><strong id="n-radicados">8</strong>proyectos radicados</li>
+    <li><strong>Comisión Primera</strong>de la Cámara</li>
+    <li><strong>+20 años</strong>en corporaciones públicas de Caldas</li>
+  </ul>
+</div>
+
+<section id="quien">
+  <div class="envoltura quien">
+    <div class="foto">
+      <img src="img/manuel.jpg" alt="Manuel Orlando Correa Bedoya" onerror="this.remove()">
+      <div class="sin-foto" aria-hidden="true"><span>MC</span>Aquí va la foto oficial (img/manuel.jpg)</div>
+    </div>
+    <div class="bio">
+      <h2 class="titulo">De Manizales al Congreso</h2>
+      <p class="entrada">Manuel Orlando Correa Bedoya es abogado, magíster en derecho administrativo de la Universidad Externado de Colombia, y ha dedicado más de dos décadas a lo público en Caldas.</p>
+      <p>Fue concejal de Manizales durante dos periodos y diputado a la Asamblea de Caldas. Después fue secretario privado de la Gobernación, cargo que dejó para aspirar a la Cámara. En 2026 Caldas lo eligió como su representante con la segunda votación del departamento.</p>
+      <p>Su trabajo legislativo tiene un hilo conductor: que las decisiones de Bogotá lleguen a los territorios. Por eso su agenda mezcla patrimonio, ambiente, innovación y la reconstrucción tras el sismo de 2026.</p>
+      <ol class="trayectoria" aria-label="Trayectoria">
+        <li><span class="anio">2012 – 2019</span><span class="que">Concejal de Manizales, dos periodos</span></li>
+        <li><span class="anio">2020 – 2023</span><span class="que">Diputado a la Asamblea de Caldas</span></li>
+        <li><span class="anio">Hasta 2025</span><span class="que">Secretario privado de la Gobernación de Caldas</span></li>
+        <li class="hoy"><span class="anio">2026 – 2030</span><span class="que">Representante a la Cámara por Caldas, partido ASI</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="agenda">
+  <div class="envoltura">
+    <h2 class="titulo">Agenda legislativa</h2>
+    <p class="entrada">Lo que ya está radicado en el Congreso y lo que se está preparando. Toca un proyecto para ver de qué se trata.</p>
+    <div class="filtros" id="filtros" role="group" aria-label="Filtrar por tema"></div>
+    <ul class="leyes" id="leyes"></ul>
+    <p class="nota-agenda">Varios proyectos se presentan con el senador por Caldas Wilder Escobar.</p>
+  </div>
+</section>
+
+<section id="participa">
+  <div class="envoltura">
+    <h2 class="titulo">Participa</h2>
+    <p class="entrada">Las mejores leyes empiezan en una vereda, una plaza o un salón comunal. Escríbenos, súmate al equipo o recibe las noticias.</p>
+    <div class="participa">
+      <div>
+        <div class="pestanas" role="tablist" aria-label="Formularios">
+          <button role="tab" id="t-buzon" aria-controls="p-buzon" aria-selected="true">Buzón ciudadano</button>
+          <button role="tab" id="t-voluntarios" aria-controls="p-voluntarios" aria-selected="false" tabindex="-1">Súmate a la red</button>
+          <button role="tab" id="t-boletin" aria-controls="p-boletin" aria-selected="false" tabindex="-1">Boletín</button>
+        </div>
+
+        <form class="panel" id="p-buzon" role="tabpanel" aria-labelledby="t-buzon" data-form="buzon" novalidate>
+          <p class="intro">Una propuesta, una petición o una necesidad de tu municipio. El equipo la lee, la clasifica y te responde al correo.</p>
+          <div class="campos">
+            <div class="campo"><label for="b-nombre">Nombre completo</label><input id="b-nombre" name="nombre" autocomplete="name" required maxlength="120"></div>
+            <div class="campo"><label for="b-municipio">Municipio</label><select id="b-municipio" name="municipio" required></select></div>
+            <div class="campo"><label for="b-correo">Correo electrónico</label><input id="b-correo" name="correo" type="email" autocomplete="email" required maxlength="160"></div>
+            <div class="campo"><label for="b-celular">Celular <span class="opcional">(opcional)</span></label><input id="b-celular" name="celular" type="tel" autocomplete="tel" maxlength="20"></div>
+            <div class="campo"><label for="b-tipo">¿Qué nos envías?</label>
+              <select id="b-tipo" name="tipo" required><option value="">Elige una opción</option><option>Propuesta</option><option>Petición</option><option>Necesidad del municipio</option><option>Queja o denuncia</option></select></div>
+            <div class="campo"><label for="b-tema">Tema</label>
+              <select id="b-tema" name="tema" required><option value="">Elige un tema</option><option>Vías y movilidad</option><option>Reconstrucción tras el sismo</option><option>Educación</option><option>Salud</option><option>Campo y agro</option><option>Ambiente</option><option>Cultura y patrimonio</option><option>Turismo</option><option>Empleo y empresa</option><option>Ciencia, tecnología e innovación</option><option>Seguridad</option><option>Otro</option></select></div>
+            <div class="campo ancho"><label for="b-mensaje">Cuéntanos</label><textarea id="b-mensaje" name="mensaje" required maxlength="3000" placeholder="Qué pasa, a quién afecta y qué propones"></textarea></div>
+            <label class="autoriza"><input type="checkbox" name="autoriza" required> <span>Autorizo el tratamiento de mis datos personales para gestionar esta solicitud, según la <a href="politica-datos.html" target="_blank">política de tratamiento de datos</a> (Ley 1581 de 2012).</span></label>
+          </div>
+          <div class="trampa" aria-hidden="true"><label>No llenar<input name="web" tabindex="-1" autocomplete="off"></label></div>
+          <div class="enviar"><button class="boton" type="submit">Enviar al buzón</button><span class="estado-envio" role="status" aria-live="polite"></span></div>
+        </form>
+
+        <form class="panel" id="p-voluntarios" role="tabpanel" aria-labelledby="t-voluntarios" data-form="voluntarios" hidden novalidate>
+          <p class="intro">Personas que quieren ayudar desde su municipio: organizar encuentros, llevar la voz de su comunidad o aportar lo que saben.</p>
+          <div class="campos">
+            <div class="campo"><label for="v-nombre">Nombre completo</label><input id="v-nombre" name="nombre" autocomplete="name" required maxlength="120"></div>
+            <div class="campo"><label for="v-municipio">Municipio</label><select id="v-municipio" name="municipio" required></select></div>
+            <div class="campo"><label for="v-correo">Correo electrónico</label><input id="v-correo" name="correo" type="email" autocomplete="email" required maxlength="160"></div>
+            <div class="campo"><label for="v-celular">Celular</label><input id="v-celular" name="celular" type="tel" autocomplete="tel" required maxlength="20"></div>
+            <fieldset class="campo ancho"><legend>¿Cómo quieres ayudar?</legend>
+              <div class="opciones">
+                <label><input type="checkbox" name="ayuda" value="Organizar encuentros"> Organizar encuentros</label>
+                <label><input type="checkbox" name="ayuda" value="Líder de barrio o vereda"> Líder de barrio o vereda</label>
+                <label><input type="checkbox" name="ayuda" value="Redes sociales"> Redes sociales</label>
+                <label><input type="checkbox" name="ayuda" value="Aporte técnico o profesional"> Aporte técnico o profesional</label>
+                <label><input type="checkbox" name="ayuda" value="Logística de eventos"> Logística de eventos</label>
+              </div>
+            </fieldset>
+            <div class="campo ancho"><label for="v-mensaje">Algo más que quieras contarnos <span class="opcional">(opcional)</span></label><textarea id="v-mensaje" name="mensaje" maxlength="1500" style="min-height:90px"></textarea></div>
+            <label class="autoriza"><input type="checkbox" name="autoriza" required> <span>Autorizo el tratamiento de mis datos personales para que el equipo me contacte, según la <a href="politica-datos.html" target="_blank">política de tratamiento de datos</a> (Ley 1581 de 2012).</span></label>
+          </div>
+          <div class="trampa" aria-hidden="true"><label>No llenar<input name="web" tabindex="-1" autocomplete="off"></label></div>
+          <div class="enviar"><button class="boton" type="submit">Sumarme a la red</button><span class="estado-envio" role="status" aria-live="polite"></span></div>
+        </form>
+
+        <form class="panel" id="p-boletin" role="tabpanel" aria-labelledby="t-boletin" data-form="boletin" hidden novalidate>
+          <p class="intro">Un correo de vez en cuando con lo que avanzó en el Congreso y lo que viene para Caldas.</p>
+          <div class="campos">
+            <div class="campo"><label for="n-correo">Correo electrónico</label><input id="n-correo" name="correo" type="email" autocomplete="email" required maxlength="160"></div>
+            <div class="campo"><label for="n-municipio">Municipio</label><select id="n-municipio" name="municipio" required></select></div>
+            <label class="autoriza"><input type="checkbox" name="autoriza" required> <span>Autorizo recibir información por correo y el tratamiento de mis datos según la <a href="politica-datos.html" target="_blank">política de tratamiento de datos</a>. Puedo darme de baja cuando quiera.</span></label>
+          </div>
+          <div class="trampa" aria-hidden="true"><label>No llenar<input name="web" tabindex="-1" autocomplete="off"></label></div>
+          <div class="enviar"><button class="boton" type="submit">Suscribirme</button><span class="estado-envio" role="status" aria-live="polite"></span></div>
+        </form>
+      </div>
+
+      <aside class="cifras-publicas" aria-labelledby="cifras-t">
+        <h3 id="cifras-t">Lo que nos ha llegado</h3>
+        <p>Solo totales. Nunca publicamos nombres, correos ni teléfonos.</p>
+        <dl>
+          <div><dt>Mensajes al buzón</dt><dd id="c-buzon">0</dd></div>
+          <div><dt>Municipios que han escrito</dt><dd id="c-municipios">0</dd></div>
+          <div><dt>Personas en la red</dt><dd id="c-voluntarios">0</dd></div>
+        </dl>
+        <small id="c-nota"></small>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="noticias">
+  <div class="envoltura">
+    <h2 class="titulo">Noticias</h2>
+    <p class="entrada">Lo más reciente de la gestión en el Congreso.</p>
+    <ul class="noticias">
+      <li><time datetime="2026-11-04">4 de noviembre de 2026</time>
+        <a href="https://www.senado.gov.co/index.php/el-senado/noticias/7704-tres-proyectos-para-proteger-la-palma-de-cera-la-cocina-y-la-cultura" target="_blank" rel="noopener">Tres proyectos para proteger la palma de cera, la cocina y la cultura</a>
+        <div class="fuente">Prensa Senado</div></li>
+      <li><time datetime="2026-10-22">22 de octubre de 2026</time>
+        <a href="https://www.camara.gov.co/manuel-correa-defiende-los-intereses-de-los-notarios-subsidiados-del-pais/" target="_blank" rel="noopener">Manuel Correa defiende los intereses de los notarios subsidiados del país</a>
+        <div class="fuente">Prensa Cámara</div></li>
+      <li><time datetime="2026-09-23">23 de septiembre de 2026</time>
+        <a href="https://www.camara.gov.co/cuatro-proyectos-para-la-recuperacion-y-reactivacion-economica-de-los-territorios/" target="_blank" rel="noopener">Cuatro proyectos para la recuperación y reactivación económica de los territorios</a>
+        <div class="fuente">Prensa Cámara</div></li>
+      <li><time datetime="2026-07-27">27 de julio de 2026</time>
+        <a href="https://www.camara.gov.co/desde-el-congreso-manuel-correa-trabajara-para-que-las-regiones-vuelvan-a-ser-prioridad-inicia-su-gestion-por-caldas/" target="_blank" rel="noopener">Manuel Correa trabajará para que las regiones vuelvan a ser prioridad</a>
+        <div class="fuente">Prensa Cámara</div></li>
+    </ul>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="envoltura">
+    <h2 class="titulo">Contacto</h2>
+    <p class="entrada">Para agendas, prensa y organizaciones.</p>
+    <div class="contacto">
+      <div><h3>Correo institucional</h3><p><a href="mailto:manuel.correa@camara.gov.co">manuel.correa@camara.gov.co</a></p></div>
+      <div><h3>Oficina en el Congreso</h3><p>326 B, Edificio Nuevo del Congreso, Bogotá</p></div>
+      <div><h3>Perfil oficial</h3><p><a href="https://www.camara.gov.co/representantes/manuel-orlando-correa-bedoya" target="_blank" rel="noopener">camara.gov.co</a></p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="envoltura">
+    <span>Manuel Orlando Correa Bedoya · Representante a la Cámara por Caldas 2026–2030</span>
+    <a href="politica-datos.html">Política de tratamiento de datos</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var CFG = window.APP_CONFIG || {};
+  var URL_HOJA = (CFG.SCRIPT_URL || "").trim();
+  var DEMO = !URL_HOJA;
+  if (DEMO) document.getElementById("demo").hidden = false;
+
+  /* Municipios de Caldas: t = tamaño en el muro (1 grande, 3 pequeño) */
+  var MUNICIPIOS = [
+    ["Manizales",1],["Aguadas",3],["Anserma",2],["Aranzazu",3],["Belalcázar",3],["Chinchiná",2],
+    ["Filadelfia",3],["La Dorada",1],["La Merced",3],["Manzanares",2],["Marmato",2],["Marquetalia",3],
+    ["Marulanda",2],["Neira",3],["Norcasia",3],["Pácora",2],["Palestina",3],["Pensilvania",2],
+    ["Riosucio",1],["Risaralda",3],["Salamina",1],["Samaná",2],["San José",3],["Supía",2],
+    ["Victoria",3],["Villamaría",1],["Viterbo",3]
+  ];
+  var orden = [0,8,18,2,25,10,20,5,12,7,15,21,13,1,17,23,3,9,19,11,24,4,14,6,16,22,26];
+
+  var muro = document.getElementById("muro");
+  orden.forEach(function(i, k){
+    var m = MUNICIPIOS[i], b = document.createElement("button");
+    b.type = "button"; b.textContent = m[0]; b.className = "t" + m[1];
+    b.style.setProperty("--o", m[1] === 1 ? 1 : m[1] === 2 ? .78 : .6);
+    b.style.animationDelay = (0.35 + k * 0.03) + "s";
+    b.addEventListener("click", function(){ elegirMunicipio(m[0]); });
+    muro.appendChild(b);
+  });
+
+  ["b-municipio","v-municipio","n-municipio"].forEach(function(id){
+    var s = document.getElementById(id);
+    s.innerHTML = '<option value="">Elige tu municipio</option>' +
+      MUNICIPIOS.map(function(m){return m[0];}).sort(function(a,b){return a.localeCompare(b,"es");})
+      .map(function(n){return "<option>"+n+"</option>";}).join("") +
+      '<option>Otro (fuera de Caldas)</option>';
+  });
+
+  function elegirMunicipio(nombre){
+    activarPestana("buzon");
+    document.getElementById("b-municipio").value = nombre;
+    document.getElementById("participa").scrollIntoView();
+    setTimeout(function(){ document.getElementById("b-nombre").focus({preventScroll:true}); }, 400);
+  }
+
+  /* Menú en celular */
+  var bm = document.getElementById("abrir-menu"), menu = document.getElementById("menu");
+  bm.addEventListener("click", function(){
+    var a = menu.classList.toggle("abierto"); bm.setAttribute("aria-expanded", a);
+  });
+  menu.addEventListener("click", function(e){ if (e.target.tagName === "A"){ menu.classList.remove("abierto"); bm.setAttribute("aria-expanded","false"); } });
+
+  /* Agenda legislativa. estado: radicado | prep | gestion */
+  var LEYES = [
+    {t:"Distrito Especial del Conocimiento, la Sostenibilidad y la Innovación", eje:"Territorio y patrimonio", e:"radicado", f:"Septiembre de 2026",
+     d:"Declara a Manizales distrito especial para consolidarla como polo de ciencia, tecnología, innovación y sostenibilidad, con la posibilidad de que los municipios de la subregión Centro Sur se beneficien de lo que reglamente la ley.", con:"Con el senador Wilder Escobar."},
+    {t:"Paisaje Cultural Minero de Marmato, Supía y Riosucio", eje:"Territorio y patrimonio", e:"radicado", f:"Septiembre de 2026",
+     d:"Reconoce la tradición minera de estos municipios como patrimonio histórico y cultural, y abre caminos para la formalización y el fortalecimiento de la pequeña minería."},
+    {t:"Corredor de la Palma de Cera", eje:"Ambiente", e:"radicado", f:"Noviembre de 2026",
+     d:"Modifica la Ley 61 de 1985 para que el país identifique y conserve corredores de su árbol nacional. Arranca con un piloto en Salamina, Marulanda y Marquetalia, con centro de interpretación en Salamina y acceso prioritario a obras por impuestos y al Fondo para la Vida y la Biodiversidad.", con:"Con el senador Wilder Escobar."},
+    {t:"Licencias urbanísticas para la reconstrucción", eje:"Reconstrucción", e:"radicado", f:"Septiembre de 2026",
+     d:"Agiliza los trámites de licencias en las zonas afectadas por el sismo de 2026 y plantea exonerar algunos pagos, para que las familias reconstruyan sus viviendas más rápido."},
+    {t:"Reforma a CoCrea", eje:"Cultura y economía", e:"radicado", f:"Septiembre de 2026",
+     d:"Fortalece los incentivos tributarios para quienes invierten en la economía cultural y creativa, con un cupo reservado para proyectos fuera de Bogotá."},
+    {t:"Inversión en Cultura", eje:"Cultura y economía", e:"radicado", f:"Noviembre de 2026",
+     d:"Mejora los beneficios tributarios para empresas que invierten o donan en cine y cultura, con un tratamiento diferencial para las regiones.", con:"Con el senador Wilder Escobar."},
+    {t:"Sabores de Colombia", eje:"Cultura y economía", e:"radicado", f:"Noviembre de 2026",
+     d:"Política pública para proteger la cocina tradicional y respaldar a los productores del campo, con una estrategia especial para las frutas colombianas y una gran feria y congreso nacional.", con:"Con el senador Wilder Escobar."},
+    {t:"Fondo Nacional del Comercio (FONACOMER)", eje:"Cultura y economía", e:"radicado", f:"2026",
+     d:"Crea un fondo para fortalecer el comercio, financiado con un incentivo tributario a los aportes de las empresas.", con:"Con el senador Wilder Escobar."},
+    {t:"Notariado subsidiado en el Presupuesto 2027", eje:"Cultura y economía", e:"gestion", f:"Octubre de 2026",
+     d:"Proposición para incluir en la Ley de Presupuesto 2027 un artículo que garantice la sostenibilidad de las notarías subsidiadas de los municipios pequeños."},
+    {t:"Innovación por Impuestos", eje:"Innovación y tecnología", e:"prep",
+     d:"Un mecanismo tipo obras por impuestos: las empresas pagan parte de su impuesto de renta con aportes directos al Fondo Francisco José de Caldas para ciencia y tecnología."},
+    {t:"Agencia Nacional de Innovación Tecnológica y Fondo Colombia Yozma", eje:"Innovación y tecnología", e:"prep",
+     d:"Una agencia y un fondo de capital de riesgo inspirados en Israel y Chile, en el que el Estado invierte junto con fondos privados para que crezcan empresas de base tecnológica."},
+    {t:"Ley del Ecosistema Digital Nacional", eje:"Innovación y tecnología", e:"prep",
+     d:"Reglas claras para la inteligencia artificial, los datos, las plataformas y la ciberseguridad, con un espacio de pruebas regulatorio en Manizales."},
+    {t:"Ley de Interoperabilidad y Agentes de Inteligencia Artificial", eje:"Innovación y tecnología", e:"prep",
+     d:"Marco para que los agentes de IA operen en Colombia con identificación, responsable legal, registro nacional y reporte de incidentes."},
+    {t:"Distritos Territoriales de Innovación e Infraestructura Digital", eje:"Innovación y tecnología", e:"prep",
+     d:"Reconocimiento a los territorios que se organizan para la innovación y la infraestructura digital, empezando por el Distrito del Conocimiento de Manizales."},
+    {t:"Comisión bicameral de tecnologías emergentes", eje:"Innovación y tecnología", e:"prep",
+     d:"Una comisión accidental de Senado y Cámara para temas como neurotecnología, semiconductores, biotecnología, tecnología espacial y ciberseguridad, con enfoque territorial."},
+    {t:"Paisaje Cultural Ovejero de Marulanda", eje:"Territorio y patrimonio", e:"prep",
+     d:"Declara bien de interés cultural la tradición ovejera de Marulanda, en el marco de los 150 años del municipio y los 90 de su Cooperativa Ovina en 2027."},
+    {t:"Centenario de la Catedral Basílica de Manizales", eje:"Territorio y patrimonio", e:"prep",
+     d:"Propone que la Nación aporte recursos para la recuperación y el reforzamiento de la Catedral, patrimonio de los colombianos, de cara a su centenario en 2028."}
+  ];
+  var NOMBRE_ESTADO = {radicado:"Radicado", prep:"En preparación", gestion:"Gestión"};
+  document.getElementById("n-radicados").textContent = LEYES.filter(function(l){return l.e==="radicado";}).length;
+
+  var ejes = ["Todos"].concat(LEYES.map(function(l){return l.eje;}).filter(function(v,i,a){return a.indexOf(v)===i;}));
+  var filtros = document.getElementById("filtros"), lista = document.getElementById("leyes");
+  ejes.forEach(function(e, i){
+    var b = document.createElement("button"); b.type="button"; b.textContent = e;
+    b.setAttribute("aria-pressed", i===0 ? "true" : "false");
+    b.addEventListener("click", function(){
+      filtros.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed","false");});
+      b.setAttribute("aria-pressed","true"); pintar(e);
+    });
+    filtros.appendChild(b);
+  });
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];}); }
+  function pintar(eje){
+    lista.innerHTML = "";
+    LEYES.filter(function(l){ return eje==="Todos" || l.eje===eje; }).forEach(function(l, i){
+      var li = document.createElement("li"); li.className = "ley";
+      var id = "ley-" + i + "-" + eje.length;
+      li.innerHTML = '<button type="button" aria-expanded="false" aria-controls="'+id+'"><span><h3>'+esc(l.t)+'</h3><span class="eje">'+esc(l.eje)+(l.f? " · "+esc(l.f):"")+'</span></span>'+
+        '<span class="estado '+l.e+'">'+NOMBRE_ESTADO[l.e]+'</span><span class="mas" aria-hidden="true">+</span></button>'+
+        '<div class="detalle" id="'+id+'"><p>'+esc(l.d)+'</p>'+(l.con? '<p class="con">'+esc(l.con)+'</p>':'')+'</div>';
+      var b = li.querySelector("button");
+      b.addEventListener("click", function(){
+        var abierto = li.hasAttribute("open");
+        if (abierto) li.removeAttribute("open"); else li.setAttribute("open","");
+        b.setAttribute("aria-expanded", String(!abierto));
+      });
+      lista.appendChild(li);
+    });
+  }
+  pintar("Todos");
+
+  /* Pestañas de formularios */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+  function activarPestana(nombre){
+    tabs.forEach(function(t){
+      var on = t.id === "t-" + nombre;
+      t.setAttribute("aria-selected", on); t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+    });
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener("click", function(){ activarPestana(t.id.slice(2)); });
+    t.addEventListener("keydown", function(e){
+      var d = e.key==="ArrowRight" ? 1 : e.key==="ArrowLeft" ? -1 : 0;
+      if (!d) return;
+      var n = tabs[(i + d + tabs.length) % tabs.length]; activarPestana(n.id.slice(2)); n.focus();
+    });
+  });
+
+  /* Almacén del modo demostración (solo este navegador) */
+  function leerDemo(){ try { return JSON.parse(localStorage.getItem("mc_demo") || "[]"); } catch(e){ return []; } }
+  function guardarDemo(r){ try { var a = leerDemo(); a.push(r); localStorage.setItem("mc_demo", JSON.stringify(a)); } catch(e){} }
+
+  /* Envío de formularios */
+  var MENSAJE_OK = {buzon:"Recibido. Gracias por escribir: el equipo te responderá al correo.", voluntarios:"Listo, ya eres parte de la red. Te contactaremos pronto.", boletin:"Listo, quedaste suscrito al boletín."};
+  document.querySelectorAll("form[data-form]").forEach(function(f){
+    f.addEventListener("submit", function(e){
+      e.preventDefault();
+      var estado = f.querySelector(".estado-envio"), boton = f.querySelector('button[type="submit"]');
+      estado.className = "estado-envio"; estado.textContent = "";
+      var faltante = Array.prototype.find.call(f.querySelectorAll("[required]"), function(el){
+        return el.type === "checkbox" ? !el.checked : !el.value.trim() || (el.type==="email" && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value.trim()));
+      });
+      if (faltante){
+        estado.className = "estado-envio error";
+        estado.textContent = faltante.type === "checkbox" ? "Para enviar, marca la casilla de autorización de datos."
+          : faltante.type === "email" ? "Revisa el correo: debe tener la forma nombre@dominio.com."
+          : "Falta llenar: " + (f.querySelector('label[for="'+faltante.id+'"]') || {}).textContent.replace("(opcional)","").trim() + ".";
+        faltante.focus(); return;
+      }
+      var datos = {form: f.dataset.form, pagina: location.hostname || "local"};
+      new FormData(f).forEach(function(v, k){
+        if (k === "ayuda") datos.ayuda = (datos.ayuda ? datos.ayuda + ", " : "") + v;
+        else if (k === "autoriza") datos.autoriza = true;
+        else datos[k] = String(v).trim();
+      });
+      boton.disabled = true; var txt = boton.textContent; boton.textContent = "Enviando…";
+      var fin = function(ok, msj){
+        boton.disabled = false; boton.textContent = txt;
+        estado.className = "estado-envio " + (ok ? "ok" : "error"); estado.textContent = msj;
+        if (ok){ f.reset(); cargarTotales(); }
+      };
+      if (DEMO){
+        if (!datos.web){ datos.fecha = new Date().toISOString(); guardarDemo(datos); }
+        setTimeout(function(){ fin(true, MENSAJE_OK[datos.form] + " (modo demostración)"); }, 500);
+        return;
+      }
+      fetch(URL_HOJA, {method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body: JSON.stringify(datos)})
+        .then(function(r){ return r.json(); })
+        .then(function(r){ r && r.ok ? fin(true, MENSAJE_OK[datos.form]) : fin(false, "No se pudo guardar: " + ((r && r.error) || "intenta de nuevo en un momento.")); })
+        .catch(function(){ fin(false, "No se pudo enviar. Revisa tu conexión a internet e intenta de nuevo."); });
+    });
+  });
+
+  /* Totales públicos (solo conteos) */
+  function pintarTotales(t){
+    document.getElementById("c-buzon").textContent = (t.buzon||0).toLocaleString("es-CO");
+    document.getElementById("c-municipios").textContent = (t.municipios||0) + " de 27";
+    document.getElementById("c-voluntarios").textContent = (t.voluntarios||0).toLocaleString("es-CO");
+  }
+  function cargarTotales(){
+    var nota = document.getElementById("c-nota");
+    if (DEMO){
+      var a = leerDemo(), m = {};
+      a.forEach(function(r){ if (r.form==="buzon" && r.municipio && r.municipio.indexOf("Otro")!==0) m[r.municipio]=1; });
+      pintarTotales({buzon:a.filter(function(r){return r.form==="buzon";}).length, voluntarios:a.filter(function(r){return r.form==="voluntarios";}).length, municipios:Object.keys(m).length});
+      nota.textContent = "Cifras de demostración: cuentan solo lo enviado desde este navegador.";
+      return;
+    }
+    fetch(URL_HOJA + "?accion=totales").then(function(r){return r.json();})
+      .then(function(t){ if (t && t.ok){ pintarTotales(t); nota.textContent = "Actualizado " + new Date().toLocaleString("es-CO",{dateStyle:"medium",timeStyle:"short"}) + "."; } })
+      .catch(function(){ nota.textContent = "No se pudieron cargar las cifras en este momento."; });
+  }
+  cargarTotales();
+})();
+</script>
+</body>
+</html>
