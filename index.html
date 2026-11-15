@@ -144,6 +144,17 @@ section{padding:88px 0}
 @media (max-width:600px){.ley button{grid-template-columns:minmax(0,1fr) 28px}.ley .estado{grid-row:2;justify-self:start}}
 .nota-agenda{font-size:.9rem;color:var(--gris);margin-top:20px}
 
+
+/* Galería */
+#galeria{background:var(--niebla)}
+.galeria{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:220px;gap:12px;margin:0;padding:0;list-style:none}
+.galeria li{position:relative;overflow:hidden;border-radius:var(--r-s);background:var(--paramo)}
+.galeria li.grande{grid-column:span 2;grid-row:span 2}
+.galeria img{width:100%;height:100%;object-fit:cover}
+.galeria figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 12px;font-size:.9rem;font-weight:600;color:#fff;background:linear-gradient(transparent,rgba(10,52,56,.85))}
+@media (max-width:860px){.galeria{grid-template-columns:1fr 1fr;grid-auto-rows:170px}.galeria li.grande{grid-column:span 2;grid-row:span 1}}
+@media (max-width:480px){.galeria{grid-template-columns:1fr;grid-auto-rows:220px}.galeria li.grande{grid-column:auto}}
+
 /* Participa */
 #participa{background:var(--niebla)}
 .participa{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:48px;align-items:start}
@@ -254,8 +265,8 @@ footer a{color:#fff}
 <section id="quien">
   <div class="envoltura quien">
     <div class="foto">
-      <img src="img/manuel.jpg" alt="Manuel Orlando Correa Bedoya" onerror="this.remove()">
-      <div class="sin-foto" aria-hidden="true"><span>MC</span>Aquí va la foto oficial (img/manuel.jpg)</div>
+      <img src="img/manuel.jpg" alt="Manuel Orlando Correa Bedoya en la plenaria de la Cámara" onerror="this.remove()" style="position:relative;z-index:1">
+      <div class="sin-foto" aria-hidden="true"><span>MC</span></div>
     </div>
     <div class="bio">
       <h2 class="titulo">De Manizales al Congreso</h2>
@@ -279,6 +290,21 @@ footer a{color:#fff}
     <div class="filtros" id="filtros" role="group" aria-label="Filtrar por tema"></div>
     <ul class="leyes" id="leyes"></ul>
     <p class="nota-agenda">Varios proyectos se presentan con el senador por Caldas Wilder Escobar.</p>
+  </div>
+</section>
+
+<section id="galeria">
+  <div class="envoltura">
+    <h2 class="titulo">En el Congreso y en Caldas</h2>
+    <p class="entrada">La gestión, en imágenes.</p>
+    <ul class="galeria">
+      <li class="grande"><figure style="margin:0;height:100%"><img src="img/plenaria-camara.jpg" alt="Sesión plenaria de la Cámara de Representantes en el Capitolio Nacional" loading="lazy"><figcaption>Plenaria de la Cámara de Representantes</figcaption></figure></li>
+      <li><figure style="margin:0;height:100%"><img src="img/plenaria-curul.jpg" alt="Manuel Correa en su curul durante una sesión plenaria" loading="lazy"><figcaption>En la plenaria</figcaption></figure></li>
+      <li><figure style="margin:0;height:100%"><img src="img/comision-primera.jpg" alt="Manuel Correa tomando notas en la Comisión Primera" loading="lazy"><figcaption>Comisión Primera</figcaption></figure></li>
+      <li><figure style="margin:0;height:100%"><img src="img/territorio.jpg" alt="Manuel Correa hablando en un encuentro comunitario en Caldas" loading="lazy"><figcaption>En el territorio</figcaption></figure></li>
+      <li><figure style="margin:0;height:100%"><img src="img/radicacion-proyectos.jpg" alt="Manuel Correa y otros congresistas muestran proyectos de ley radicados" loading="lazy"><figcaption>Radicación de proyectos</figcaption></figure></li>
+      <li><figure style="margin:0;height:100%"><img src="img/en-el-congreso.jpg" alt="Manuel Correa conversando en el recinto del Congreso" loading="lazy"><figcaption>En el Congreso</figcaption></figure></li>
+    </ul>
   </div>
 </section>
 
