@@ -234,6 +234,8 @@ section{padding:96px 0;scroll-margin-top:68px}
 /* Galería */
 #galeria{background:var(--niebla)}
 .mosaico{columns:3 300px;column-gap:14px}
+#con-la-gente{background:var(--blanco)}
+#con-la-gente .mosaico figcaption{background:var(--amarillo);color:var(--tinta)}
 .mosaico figure{break-inside:avoid;margin:0 0 14px;position:relative;border-radius:var(--r-m);overflow:hidden;background:var(--paramo)}
 .mosaico button{all:unset;cursor:zoom-in;display:block}
 .mosaico button:focus-visible{outline:3px solid var(--amarillo);outline-offset:-3px}
@@ -356,6 +358,7 @@ footer a{color:#fff}
       <li><a href="#mapa">Mapa</a></li>
       <li><a href="#agenda">Agenda</a></li>
       <li><a href="#galeria">Galería</a></li>
+      <li><a href="#con-la-gente">Con la gente</a></li>
       <li><a href="#podcast">Podcast</a></li>
       <li><a href="#noticias">Noticias</a></li>
       <li><a class="cta" href="#participa">Participa</a></li>
@@ -530,6 +533,13 @@ footer a{color:#fff}
     <h2 class="titulo">En el Congreso y en Caldas</h2>
     <p class="entrada">La gestión, en imágenes. Toca una foto para verla en grande.</p>
     <div class="mosaico" id="mosaico"></div>
+  </div>
+</section>
+<section id="con-la-gente">
+  <div class="envoltura">
+    <h2 class="titulo">Con la gente</h2>
+    <p class="entrada">Del recorrido por los municipios de Caldas durante la campaña de 2026: reuniones de barrio, plazas y conversaciones cara a cara. Toca una foto para verla en grande.</p>
+    <div class="mosaico" id="mosaico-gente"></div>
   </div>
 </section>
 <dialog id="visor" aria-label="Foto ampliada"><button class="cerrar" type="button">Cerrar</button><img alt=""><p></p></dialog>
@@ -937,16 +947,30 @@ footer a{color:#fff}
     ["plenaria-curul.jpg","Sesión plenaria"],
     ["retrato.jpg","Atento al debate"]
   ];
-  var mosaico = document.getElementById("mosaico"), visor = document.getElementById("visor");
-  FOTOS.forEach(function(f){
-    var fig = document.createElement("figure");
-    fig.innerHTML = '<button type="button" aria-label="Ampliar foto: '+esc(f[1])+'"><img src="img/'+f[0]+'" alt="'+esc(f[1])+'" loading="lazy"></button><figcaption>'+esc(f[1])+'</figcaption>';
-    fig.querySelector("button").addEventListener("click", function(){
-      visor.querySelector("img").src = "img/"+f[0]; visor.querySelector("img").alt = f[1]; visor.querySelector("p").textContent = f[1];
-      if (visor.showModal) visor.showModal();
+  var GENTE = [
+    ["gente-abrazo.jpg","Con las familias de Caldas"],
+    ["gente-reunion.jpg","Reunión con la comunidad"],
+    ["gente-abuelo.jpg","Escuchar primero"],
+    ["gente-grupo.jpg","Con amigos y vecinos"],
+    ["gente-microfono.jpg","Conversación abierta con la gente"],
+    ["gente-tarima.jpg","En la plaza pública"],
+    ["gente-foto1.jpg","Recorriendo Caldas"],
+    ["gente-foto2.jpg","Con la gente de Caldas"]
+  ];
+  var visor = document.getElementById("visor");
+  function armarMosaico(cont, fotos){
+    fotos.forEach(function(f){
+      var fig = document.createElement("figure");
+      fig.innerHTML = '<button type="button" aria-label="Ampliar foto: '+esc(f[1])+'"><img src="img/'+f[0]+'" alt="'+esc(f[1])+'" loading="lazy"></button><figcaption>'+esc(f[1])+'</figcaption>';
+      fig.querySelector("button").addEventListener("click", function(){
+        visor.querySelector("img").src = "img/"+f[0]; visor.querySelector("img").alt = f[1]; visor.querySelector("p").textContent = f[1];
+        if (visor.showModal) visor.showModal();
+      });
+      cont.appendChild(fig);
     });
-    mosaico.appendChild(fig);
-  });
+  }
+  armarMosaico(document.getElementById("mosaico"), FOTOS);
+  armarMosaico(document.getElementById("mosaico-gente"), GENTE);
   visor.querySelector(".cerrar").addEventListener("click", function(){ visor.close(); });
   visor.addEventListener("click", function(e){ if (e.target === visor) visor.close(); });
 
