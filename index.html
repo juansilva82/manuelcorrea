@@ -189,6 +189,18 @@ section{padding:96px 0;scroll-margin-top:68px}
 .ficha ul{margin:0 0 20px;padding:0;list-style:none;display:grid;gap:8px}
 .ficha li{background:var(--niebla);border-radius:var(--r-s);padding:10px 12px;font-weight:600;font-size:.95rem;line-height:1.3}
 .ficha li small{display:block;font-weight:400;color:var(--gris);font-size:.82rem;margin-top:2px}
+.filtro-tit{margin:0 0 8px;font-size:.85rem;font-weight:700;color:var(--menta)}
+.subregiones.proyectos button small{font-size:.78rem;background:rgba(255,255,255,.15);border-radius:999px;padding:1px 7px}
+.subregiones.proyectos button[aria-pressed="true"] small{background:var(--niebla)}
+#svg-mapa path.resalta{fill:#F7D77E!important}
+.ficha .li-cab{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.ficha .li-cab .estado{font-size:.7rem;padding:3px 8px}
+.ficha li.todo{background:#fff;border:1px dashed var(--linea)}
+.ficha .todo-tit{margin:4px 0 8px;font-weight:700;color:var(--paramo);font-size:.92rem}
+.ficha .ver-ley{all:unset;cursor:pointer;display:inline-block;margin-top:6px;font-size:.82rem;font-weight:700;color:var(--colibri);text-decoration:underline}
+.ficha .ver-ley:focus-visible{outline:2px solid var(--amarillo)}
+.ley .munis{font-size:.92rem;background:#fff;border-radius:var(--r-s);padding:10px 12px}
+.ley .munis button{all:unset;cursor:pointer;font-weight:700;color:var(--colibri);text-decoration:underline;margin-left:4px}
 @media (max-width:900px){.mapa{grid-template-columns:1fr}.ficha{position:static}#svg-mapa text{display:none}#mapa{margin:0}}
 
 /* Agenda */
@@ -487,9 +499,12 @@ footer a{color:#fff}
 <section id="mapa">
   <div class="envoltura">
     <h2 class="titulo">Caldas, municipio por municipio</h2>
-    <p class="entrada">Toca un municipio para ver qué proyectos lo tocan y enviarnos una propuesta desde allí.</p>
+    <p class="entrada">Toca un municipio para ver qué proyectos de ley lo nombran, o elige un proyecto para ver a qué municipios llega. Los vínculos salen del texto de cada proyecto.</p>
     <div class="mapa">
       <div>
+        <p class="filtro-tit">Ver por proyecto</p>
+        <div class="subregiones proyectos" id="por-proyecto" role="group" aria-label="Ver los municipios de un proyecto"></div>
+        <p class="filtro-tit">Ver por subregión</p>
         <div class="subregiones" id="subregiones" role="group" aria-label="Filtrar por subregión"></div>
         <div class="lienzo">
           <svg id="svg-mapa" viewBox="0 0 1000 759" role="group" aria-label="Mapa de los 27 municipios de Caldas"></svg>
@@ -697,18 +712,40 @@ footer a{color:#fff}
   };
   var SUB_DE = {};
   Object.keys(SUBREGIONES).forEach(function(s){ SUBREGIONES[s].m.forEach(function(m){ SUB_DE[m]=s; }); });
-  var PROYECTOS_MUNI = {
-    "Distrito": {t:"Distrito Especial del Conocimiento", d:"Acto Legislativo 244 de 2026 · Manizales como distrito; el Centro Sur podrá beneficiarse"},
-    "Minero": {t:"Paisaje Cultural Minero", d:"Radicado · Marmato, Supía y Riosucio"},
-    "Palma": {t:"Corredor de la Palma de Cera", d:"Radicado · piloto en Salamina, Marulanda y Marquetalia"},
-    "Ovejero": {t:"Paisaje Cultural Ovejero de Marulanda", d:"En preparación · 150 años del municipio en 2027"},
-    "Catedral": {t:"Centenario de la Catedral Basílica", d:"En preparación · centenario en 2028"}
-  };
-  var MUNI_PROY = {
-    "Manizales":["Distrito","Catedral"], "Villamaría":["Distrito"], "Chinchiná":["Distrito"], "Palestina":["Distrito"], "Neira":["Distrito"],
-    "Marmato":["Minero"], "Supía":["Minero"], "Riosucio":["Minero"],
-    "Salamina":["Palma"], "Marquetalia":["Palma"], "Marulanda":["Palma","Ovejero"]
-  };
+  /* Vínculos proyecto ↔ municipio, tomados del texto de cada proyecto */
+  var PCC = ["Aguadas","Anserma","Aranzazu","Belalcázar","Chinchiná","Filadelfia","La Merced","Manizales","Neira","Pácora","Palestina","Riosucio","Risaralda","Salamina","San José","Supía","Villamaría"];
+  var VINCULOS = [
+    {k:"distrito", t:"Distrito Especial del Conocimiento", e:"radicado", ley:"Distrito Especial del Conocimiento, la Sostenibilidad y la Innovación", m:{
+      "Manizales":"Se organiza como Distrito Especial del Conocimiento, la Sostenibilidad y la Innovación (artículos 1 y 2 del Acto Legislativo).",
+      "Villamaría":"Como parte del Área Metropolitana del Centro Sur podrá beneficiarse de los incentivos del Distrito. Es sede de FUTURA, el nodo ancla del proyecto.",
+      "Chinchiná":"Podrá acogerse a los incentivos del Distrito; la exposición de motivos prevé hacerlo por acuerdo de su Concejo.",
+      "Palestina":"Podrá acogerse a los incentivos del Distrito; la exposición de motivos prevé hacerlo por acuerdo de su Concejo.",
+      "Neira":"Podrá acogerse a los incentivos del Distrito; la exposición de motivos prevé hacerlo por acuerdo de su Concejo."}},
+    {k:"minero", t:"Paisaje Cultural Minero", e:"radicado", ley:"Paisaje Cultural Minero de Marmato, Supía y Riosucio", m:{
+      "Marmato":"Hace parte del distrito minero que el proyecto reconoce como Paisaje Cultural Minero.",
+      "Supía":"Hace parte del distrito minero que el proyecto reconoce como Paisaje Cultural Minero.",
+      "Riosucio":"Hace parte del distrito minero que el proyecto reconoce como Paisaje Cultural Minero."}},
+    {k:"palma", t:"Corredor de la Palma de Cera", e:"radicado", ley:"Corredor de la Palma de Cera", m:{
+      "Salamina":"Corredor piloto, incluido el corregimiento de San Félix (art. 3). Sede del Centro de Interpretación de la Palma de Cera (art. 11) y priorizado para obras por impuestos (art. 10).",
+      "Marulanda":"Corredor piloto (art. 3) y priorizado para obras por impuestos y el Fondo para la Vida y la Biodiversidad (art. 10).",
+      "Marquetalia":"Corredor piloto (art. 3) y priorizado para obras por impuestos y el Fondo para la Vida y la Biodiversidad (art. 10)."}},
+    {k:"cocrea", t:"Reforma a CoCrea", e:"radicado", ley:"Reforma a CoCrea: incentivo a la inversión y donación en cultura", m:{}},
+    {k:"ovejero", t:"Paisaje Cultural Ovejero", e:"prep", ley:"Paisaje Cultural Ovejero de Marulanda", m:{
+      "Marulanda":"Declararía su tradición ovejera bien de interés cultural de la Nación, en los 150 años del municipio."}},
+    {k:"catedral", t:"Centenario de la Catedral Basílica", e:"prep", ley:"Centenario de la Catedral Basílica de Manizales", m:{
+      "Manizales":"Recursos de la Nación para recuperar y reforzar la Catedral Basílica de cara a su centenario."}},
+    {k:"digital", t:"Ecosistema Digital Nacional", e:"prep", ley:"Ley del Ecosistema Digital Nacional", m:{
+      "Manizales":"Sede del espacio de pruebas regulatorio (sandbox) de inteligencia artificial, ciberseguridad y chips."}},
+    {k:"dtiid", t:"Distritos de Innovación e Infraestructura Digital", e:"prep", ley:"Distritos Territoriales de Innovación e Infraestructura Digital", m:{
+      "Manizales":"Primer caso reconocido, a través del Distrito Especial del Conocimiento."}}
+  ];
+  PCC.forEach(function(n){ VINCULOS[3].m[n] = "Está en el Paisaje Cultural Cafetero: sus proyectos culturales tienen atención especial en el incentivo (art. 4)."; });
+  var TODO_CALDAS = [
+    {t:"Licencias urbanísticas para la reconstrucción", d:"Vía rápida de licencias para las familias damnificadas por el sismo, inscritas en el Registro Único de Damnificados."},
+    {t:"Sabores de Colombia", d:"Estrategia nacional de gastronomía y frutas, con énfasis en comunidades campesinas."}
+  ];
+  var NOMBRE_EST = {radicado:"Radicado", prep:"En preparación", gestion:"Gestión"};
+  function vinculosDe(n){ return VINCULOS.filter(function(v){ return v.m[n]; }); }
   var svg = document.getElementById("svg-mapa"), NS = "http://www.w3.org/2000/svg";
   var capas = {}, seleccion = null, filtroSub = null;
   MAPA.m.forEach(function(m){
@@ -729,18 +766,43 @@ footer a{color:#fff}
     b.innerHTML = '<i style="background:'+SUBREGIONES[s].c+'"></i>' + esc(s);
     b.addEventListener("click", function(){
       filtroSub = filtroSub === s ? null : s;
+      filtroPro = null; VINCULOS.forEach(function(x){ x.boton.setAttribute("aria-pressed","false"); }); Object.keys(capas).forEach(function(n){ capas[n].classList.remove("resalta"); });
       cajaSub.querySelectorAll("button").forEach(function(x){ x.setAttribute("aria-pressed", String(x === b && filtroSub === s)); });
       Object.keys(capas).forEach(function(n){ capas[n].classList.toggle("atenuado", !!filtroSub && SUB_DE[n] !== filtroSub); });
       if (!seleccion) fichaInicial();
     });
     cajaSub.appendChild(b);
   });
+  var cajaPro = document.getElementById("por-proyecto"), filtroPro = null;
+  VINCULOS.forEach(function(v){
+    var b = document.createElement("button"); b.type="button"; b.setAttribute("aria-pressed","false");
+    b.innerHTML = esc(v.t) + ' <small>' + Object.keys(v.m).length + '</small>';
+    b.addEventListener("click", function(){ verProyecto(filtroPro === v ? null : v); });
+    v.boton = b; cajaPro.appendChild(b);
+  });
+  function verProyecto(v){
+    filtroPro = v; filtroSub = null;
+    cajaSub.querySelectorAll("button").forEach(function(x){ x.setAttribute("aria-pressed","false"); });
+    VINCULOS.forEach(function(x){ x.boton.setAttribute("aria-pressed", String(x === v)); });
+    Object.keys(capas).forEach(function(n){ capas[n].classList.toggle("resalta", !!v && !!v.m[n]); capas[n].classList.toggle("atenuado", !!v && !v.m[n]); });
+    if (seleccion){ capas[seleccion].classList.remove("activo"); seleccion = null; var mk = document.getElementById("mk-colibri"); if (mk) mk.remove(); }
+    v ? fichaProyecto(v) : fichaInicial();
+  }
   var ficha = document.getElementById("ficha");
+  function estadoHtml(e){ return '<span class="estado '+e+'">'+NOMBRE_EST[e]+'</span>'; }
   function fichaInicial(){
     var lista = filtroSub ? SUBREGIONES[filtroSub].m : null;
     ficha.innerHTML = '<span class="sub">'+(filtroSub ? "Subregión" : "Departamento de Caldas")+'</span><h3>'+esc(filtroSub || "27 municipios")+'</h3>'+
-      '<p>'+(lista ? esc(lista.join(", ")) + "." : "Seis subregiones, del Magdalena al Occidente. Elige un municipio en el mapa para ver sus proyectos.")+'</p>'+
+      '<p>'+(lista ? esc(lista.join(", ")) + "." : "Elige un municipio para ver los proyectos que lo nombran, o elige un proyecto para ver en qué municipios tiene efecto directo.")+'</p>'+
       '<a class="boton lleno" href="#participa" id="ficha-cta">Enviar una propuesta</a>';
+  }
+  function fichaProyecto(v){
+    var ms = Object.keys(v.m).sort(function(a,b){ return a.localeCompare(b,"es"); });
+    ficha.innerHTML = '<span class="sub">Proyecto · '+NOMBRE_EST[v.e]+'</span><h3 style="font-size:1.7rem">'+esc(v.t)+'</h3>'+
+      '<p>Tiene relación directa con <b>'+ms.length+(ms.length===1?' municipio':' municipios')+'</b>: '+esc(ms.join(", "))+'.</p>'+
+      '<p style="font-size:.9rem">Toca uno en el mapa para ver qué dice el proyecto sobre él.</p>'+
+      '<button class="boton lleno" type="button" id="ficha-ley">Ver el proyecto en la agenda</button>';
+    document.getElementById("ficha-ley").addEventListener("click", function(){ abrirLey(v.ley); });
   }
   function elegir(n){
     if (seleccion) capas[seleccion].classList.remove("activo");
@@ -748,11 +810,17 @@ footer a{color:#fff}
     var c = MAPA.m.filter(function(m){ return m.n === n; })[0], mk = document.getElementById("mk-colibri");
     if (!mk){ mk = document.createElementNS(NS,"image"); mk.id = "mk-colibri"; mk.setAttribute("href","img/colibri-sm.png"); mk.setAttribute("width","80"); mk.setAttribute("height","86"); mk.style.pointerEvents = "none"; }
     svg.appendChild(mk); mk.setAttribute("x", c.x - 26); mk.setAttribute("y", c.y - 92);
-    var pr = (MUNI_PROY[n] || []).map(function(k){ return '<li>'+esc(PROYECTOS_MUNI[k].t)+'<small>'+esc(PROYECTOS_MUNI[k].d)+'</small></li>'; }).join("");
+    var vs = vinculosDe(n);
+    var pr = vs.map(function(v, i){
+      return '<li><span class="li-cab">'+esc(v.t)+estadoHtml(v.e)+'</span><small>'+esc(v.m[n])+'</small><button type="button" class="ver-ley" data-i="'+VINCULOS.indexOf(v)+'">Ver proyecto</button></li>';
+    }).join("");
+    var todo = TODO_CALDAS.map(function(t){ return '<li class="todo"><span class="li-cab">'+esc(t.t)+estadoHtml("radicado")+'</span><small>'+esc(t.d)+'</small><button type="button" class="ver-ley" data-t="'+esc(t.t)+'">Ver proyecto</button></li>'; }).join("");
     ficha.innerHTML = '<span class="sub">'+esc(SUB_DE[n])+'</span><h3>'+esc(n)+'</h3>'+
-      (pr ? '<p>Proyectos que tocan a '+esc(n)+':</p><ul>'+pr+'</ul>' : '<p>Aún no hay un proyecto específico para '+esc(n)+'. Tu propuesta puede ser la primera.</p>')+
-      '<p style="font-size:.9rem">Para todo Caldas: licencias para la reconstrucción, Reforma a CoCrea y Sabores de Colombia.</p>'+
+      (pr ? '<p><b>'+vs.length+(vs.length===1?' proyecto lo nombra':' proyectos lo nombran')+'</b> directamente:</p><ul>'+pr+'</ul>'
+          : '<p>Ningún proyecto nombra todavía a '+esc(n)+'. Tu propuesta puede ser la primera.</p>')+
+      '<p class="todo-tit">Y para todo Caldas:</p><ul>'+todo+'</ul>'+
       '<button class="boton lleno" type="button" id="ficha-cta">Enviar una propuesta desde '+esc(n)+'</button>';
+    ficha.querySelectorAll(".ver-ley").forEach(function(b){ b.addEventListener("click", function(){ abrirLey(b.dataset.t || VINCULOS[+b.dataset.i].ley); }); });
     document.getElementById("ficha-cta").addEventListener("click", function(){ elegirMunicipio(n); });
     if (window.innerWidth < 900) ficha.scrollIntoView({block:"nearest"});
   }
@@ -827,11 +895,30 @@ footer a{color:#fff}
       li.innerHTML = '<button type="button" aria-expanded="false" aria-controls="'+id+'"><span><h3>'+esc(l.t)+'</h3><span class="eje">'+esc(l.eje)+(l.f? " · "+esc(l.f):"")+'</span></span>'+
         '<span class="estado '+l.e+'">'+NOMBRE_ESTADO[l.e]+(l.pdf? ' · PDF':'')+'</span><span class="mas" aria-hidden="true">+</span></button>'+
         '<div class="detalle" id="'+id+'">'+(l.num? '<p class="con"><strong>'+esc(l.num)+'</strong></p>':'')+'<p>'+esc(l.d)+'</p>'+(l.con? '<p class="con">'+esc(l.con)+'</p>':'')+
-        (l.pdf? '<a class="descarga" href="'+l.pdf+'" download>Descargar el proyecto radicado (PDF, '+l.pags+' págs., '+l.peso+')</a> <a class="ver-pdf" href="'+l.pdf+'" target="_blank" rel="noopener">Verlo en el navegador</a>':'')+'</div>';
+        munisDe(l.t)+(l.pdf? '<a class="descarga" href="'+l.pdf+'" download>Descargar el proyecto radicado (PDF, '+l.pags+' págs., '+l.peso+')</a> <a class="ver-pdf" href="'+l.pdf+'" target="_blank" rel="noopener">Verlo en el navegador</a>':'')+'</div>';
       var b = li.querySelector("button");
       b.addEventListener("click", function(){ var ab = li.hasAttribute("open"); if (ab) li.removeAttribute("open"); else li.setAttribute("open",""); b.setAttribute("aria-expanded", String(!ab)); });
       lista.appendChild(li);
     });
+  }
+  function munisDe(t){
+    var v = VINCULOS.filter(function(x){ return x.ley === t; })[0];
+    if (v){ var ms = Object.keys(v.m).sort(function(a,b){ return a.localeCompare(b,"es"); });
+      return '<p class="munis"><b>Municipios con relación directa ('+ms.length+'):</b> '+esc(ms.join(", "))+'. <button type="button" data-k="'+v.k+'">Verlos en el mapa</button></p>'; }
+    if (TODO_CALDAS.some(function(x){ return x.t === t; })) return '<p class="munis"><b>Alcance:</b> todo Caldas.</p>';
+    return "";
+  }
+  lista.addEventListener("click", function(e){
+    var b = e.target.closest(".munis button"); if (!b) return;
+    var v = VINCULOS.filter(function(x){ return x.k === b.dataset.k; })[0];
+    verProyecto(v); document.getElementById("mapa").scrollIntoView();
+  });
+  function abrirLey(t){
+    filtros.querySelectorAll("button").forEach(function(x, i){ x.setAttribute("aria-pressed", String(i===0)); }); pintar("Todos");
+    var i = LEYES.map(function(l){ return l.t; }).indexOf(t), li = lista.children[i];
+    if (!li) return;
+    li.setAttribute("open",""); li.querySelector("button").setAttribute("aria-expanded","true");
+    li.scrollIntoView({block:"center"}); li.querySelector("button").focus({preventScroll:true});
   }
   pintar("Todos");
 
