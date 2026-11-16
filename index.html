@@ -164,6 +164,63 @@ section{padding:96px 0;scroll-margin-top:68px}
 @media (max-width:1100px){.comisiones{grid-template-columns:1fr 1fr}.comision,.comision:nth-child(n+4){grid-column:auto}.comision:nth-child(5){grid-column:1/-1}}
 @media (max-width:760px){.comisiones{grid-template-columns:1fr}}
 
+/* Nueva comisión */
+#nueva-comision{background:#fff}
+.nc-sello{display:inline-block;background:var(--amarillo);color:var(--tinta);font-weight:700;font-size:.88rem;padding:6px 14px;border-radius:999px;margin-bottom:14px}
+.nc-porque{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:40px}
+.nc-porque>div,.nc-como{background:var(--niebla);border-radius:var(--r-l);padding:24px 26px}
+.nc-porque h3,.nc-aportes h3,.nc-como h3,.nc-consulta h3{margin:0 0 8px;color:var(--paramo);font-size:1.25rem}
+.nc-porque p,.nc-como p{margin:0;color:#33463A}
+.nc-sub{font-variation-settings:"wdth" 112;font-weight:800;font-size:1.5rem;color:var(--paramo);margin:0 0 16px}
+.nc-tabla{overflow-x:auto;margin-bottom:44px;border-radius:var(--r-m);border:1px solid var(--linea)}
+.nc-tabla table{border-collapse:collapse;width:100%;min-width:640px;font-size:.95rem}
+.nc-tabla th,.nc-tabla td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--linea);vertical-align:top}
+.nc-tabla thead th{background:var(--paramo);color:#fff;font-weight:700}
+.nc-tabla tbody th{font-weight:700;color:var(--tinta);width:34%}
+.nc-tabla tbody th small{display:block;font-weight:400;color:var(--gris);margin-top:3px}
+.nc-tabla tr.nc-nueva{background:#FFF6DA}
+.nc-tabla tr.nc-nueva th{color:var(--paramo)}
+.nc-ejes{list-style:none;margin:0 0 44px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.nc-ejes li{background:var(--niebla);border-radius:var(--r-m);padding:18px 20px;border-top:4px solid var(--colibri)}
+.nc-ejes li:nth-child(3n+2){border-top-color:var(--amarillo)}
+.nc-ejes li:nth-child(3n){border-top-color:var(--rojo)}
+.nc-ejes li.transversal{grid-column:1/-1;background:var(--paramo);color:#fff;border-top-color:var(--amarillo)}
+.nc-ejes b{display:block;font-size:1.05rem;margin-bottom:4px}
+.nc-ejes span{font-size:.94rem;color:#33463A}
+.nc-ejes li.transversal span{color:var(--menta)}
+.nc-aportes{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.nc-aportes>div{border:1.5px solid var(--linea);border-radius:var(--r-l);padding:24px 26px}
+.nc-aportes ul{margin:0;padding-left:20px;color:#33463A}
+.nc-aportes li{margin:6px 0}
+.nc-como{margin-bottom:44px}
+.nc-docs{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.descarga.claro{background:#fff;color:var(--paramo);border:1.5px solid var(--paramo)}
+.descarga.claro:hover{background:var(--paramo);color:#fff}
+.nc-consulta{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:28px;align-items:start}
+.nc-consulta .panel{border-radius:var(--r-l)}
+.nc-consulta .intro{color:var(--gris);margin:0 0 16px}
+.nc-consulta fieldset legend{font-weight:700;margin-bottom:6px}
+.nc-resultados{background:var(--paramo);color:#fff;border-radius:var(--r-l);padding:26px;position:sticky;top:90px}
+.nc-resultados h3{color:#fff!important}
+.nc-resultados h4{margin:18px 0 10px;font-size:1rem;color:var(--amarillo)}
+.nc-total{margin:0 0 14px;color:var(--menta)}
+.nc-total b{font-variation-settings:"wdth" 118;font-weight:850;font-size:2.4rem;color:#fff;margin-right:6px}
+.nc-apoyo{display:flex;height:14px;border-radius:999px;overflow:hidden;background:rgba(255,255,255,.12)}
+.nc-apoyo i{display:block;height:100%}
+.nc-leyenda{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:8px;font-size:.85rem;color:var(--menta)}
+.nc-leyenda span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;background:var(--c)}
+.nc-barras{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.nc-barras li{font-size:.86rem}
+.nc-barras .fila{display:flex;justify-content:space-between;gap:8px;margin-bottom:3px}
+.nc-barras .barra{height:8px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden}
+.nc-barras .barra i{display:block;height:100%;background:var(--amarillo);border-radius:999px}
+.nc-resultados small{display:block;margin-top:16px;color:var(--menta);font-size:.78rem}
+.nc-fuentes{margin-top:24px;font-size:.85rem;color:var(--gris)}
+.com-cta{margin-top:20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;background:#FFF6DA;border:1.5px dashed var(--amarillo);border-radius:var(--r-l);padding:18px 22px}
+.com-cta p{margin:0;font-weight:600;color:var(--tinta)}
+@media (max-width:980px){.nc-ejes{grid-template-columns:1fr 1fr}.nc-consulta{grid-template-columns:1fr}.nc-resultados{position:static}}
+@media (max-width:700px){.nc-porque,.nc-aportes,.nc-ejes{grid-template-columns:1fr}}
+
 /* Mapa */
 #mapa{background:var(--paramo);color:#fff;border-radius:var(--r-l);margin:24px 12px 0}
 #mapa .titulo{color:#fff}
@@ -496,6 +553,130 @@ footer a{color:#fff}
         </div>
       </li>
     </ul>
+    <div class="com-cta"><p>Manuel propone una sexta: la Comisión de Tecnologías Emergentes, Ciencia Aplicada y Desarrollo Territorial.</p><a class="boton lleno" href="#nueva-comision">Conócela y opina</a></div>
+  </div>
+</section>
+
+<section id="nueva-comision">
+  <div class="envoltura">
+    <span class="nc-sello">Propuesta en discusión · Ábrela, opina y mejórala</span>
+    <h2 class="titulo">Una nueva comisión para las tecnologías que vienen</h2>
+    <p class="entrada">Manuel Correa propone crear la <b>Comisión Accidental Bicameral de Tecnologías Emergentes, Ciencia Aplicada y Desarrollo Territorial</b>. Antes de presentarla a las plenarias quiere abrir la discusión: por qué hace falta, qué aportaría, en qué se diferencia de lo que ya existe y qué deberían priorizar sus integrantes.</p>
+
+    <div class="nc-porque">
+      <div>
+        <h3>El vacío que quiere llenar</h3>
+        <p>El Congreso ya tiene espacios para el presupuesto de ciencia, para la regulación de la inteligencia artificial y para la política general de CTeI. Ninguno se ocupa de los temas de frontera que hoy definen la agenda tecnológica del mundo: neuroderechos, semiconductores y computación cuántica, edición genética, tecnología espacial y ciberseguridad como asunto de soberanía. Tampoco de cómo la ciencia que ya producen las universidades colombianas se convierte en empresas y empleo.</p>
+      </div>
+      <div>
+        <h3>Por qué ahora</h3>
+        <p>Con las redes sociales y con la inteligencia artificial las reglas llegaron tarde, cuando la tecnología ya estaba desplegada. Estas tecnologías apenas están llegando al despliegue masivo, así que el Congreso todavía puede legislar antes y no después. Ganan las personas, que quedan protegidas a tiempo, y ganan las empresas, que invierten con reglas claras.</p>
+      </div>
+    </div>
+
+    <h3 class="nc-sub">Lo que ya existe en el Congreso y lo que aportaría la nueva comisión</h3>
+    <div class="nc-tabla" role="region" aria-label="Comparativo de instancias del Congreso sobre ciencia y tecnología" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">Instancia</th><th scope="col">En qué se enfoca</th><th scope="col">Qué no repetiría la nueva comisión</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Comisión Accidental de Ciencia y Tecnología <small>2024</small></th><td>Control político al presupuesto de MinCiencias</td><td>No hace control presupuestal</td></tr>
+          <tr><th scope="row">Comisión Accidental Bicameral de Inteligencia Artificial <small>Resolución 02 de 2024</small></th><td>Articular los proyectos de ley que regulan la IA</td><td>No regula la IA en general; solo sus fronteras, como la neurotecnología y la ciberseguridad</td></tr>
+          <tr><th scope="row">Comisión Interparlamentaria de CTeI</th><td>Marco general de la política de ciencia, tecnología e innovación</td><td>No duplica el seguimiento general de política pública</td></tr>
+          <tr><th scope="row">Proyecto de ley de Comisión Legal de CTeI y Estudios de Futuro <small>PL 081 de 2025 Cámara, en la Comisión Primera</small></th><td>Crear una comisión permanente con estudios de futuro</td><td>No compite por ese rol; puede aportarle estudios técnicos</td></tr>
+          <tr class="nc-nueva"><th scope="row">Nueva: Tecnologías Emergentes, Ciencia Aplicada y Desarrollo Territorial</th><td>Seis temas de frontera, la transferencia de ciencia a empresa y su llegada a las regiones</td><td>Ocupa el espacio que hoy nadie cubre y coordina con las demás</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="nc-sub">En qué consistiría: seis ejes y uno transversal</h3>
+    <ul class="nc-ejes">
+      <li><b>Neuroderechos y neurotecnología</b><span>Libertad cognitiva, privacidad mental y protección de los datos del cerebro. Chile lo llevó a su Constitución en 2021.</span></li>
+      <li><b>Semiconductores y computación cuántica</b><span>Tecnologías críticas como asunto de soberanía. Panamá creó en 2026 su Comisión Nacional de Tecnologías Críticas y Emergentes.</span></li>
+      <li><b>Biotecnología y edición genética</b><span>Bioética y bioeconomía más allá de la agenda agropecuaria tradicional.</span></li>
+      <li><b>Tecnología espacial y conectividad satelital</b><span>Satélites pequeños y cohetes reutilizables para llevar internet a las zonas rurales donde no llega la red terrestre.</span></li>
+      <li><b>Ciberseguridad y soberanía digital</b><span>Protección de la infraestructura crítica y gobernanza de datos como asunto de seguridad nacional.</span></li>
+      <li><b>Ciencia aplicada y desarrollo tecnológico empresarial</b><span>Transferencia universidad-empresa, crecimiento de empresas de base científica y adopción de tecnología en las pymes.</span></li>
+      <li class="transversal"><b>Transversal: desarrollo territorial</b><span>Que cada eje llegue a las regiones a través de parques científicos como FUTURA en Caldas, las regalías de CTeI y las comisiones regionales de competitividad.</span></li>
+    </ul>
+
+    <div class="nc-aportes">
+      <div>
+        <h3>Su aporte al país</h3>
+        <ul>
+          <li>Proteger derechos antes de que llegue el daño, empezando por la privacidad mental.</li>
+          <li>Cerrar la brecha digital rural con conectividad satelital.</li>
+          <li>Tratar la ciberseguridad como asunto de seguridad nacional.</li>
+          <li>Evitar que la tecnología de punta se quede solo en Bogotá.</li>
+          <li>Darle al Congreso apoyo técnico permanente, como hacen el Reino Unido, Francia, Alemania y España con sus oficinas de ciencia parlamentaria.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Su aporte a la industria</h3>
+        <ul>
+          <li>Reglas claras antes de invertir en sectores nuevos.</li>
+          <li>Una agenda para atraer manufactura de tecnología crítica, ahora que las cadenas globales se relocalizan cerca de sus mercados.</li>
+          <li>Seguimiento a las oficinas de transferencia y a las empresas que nacen de las universidades.</li>
+          <li>Impulso a la adopción tecnológica de las pymes.</li>
+          <li>Respaldo a instrumentos que Manuel ya impulsa, como Innovación por Impuestos y la Agencia Nacional de Innovación Tecnológica.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nc-como">
+      <h3>Cómo se crearía</h3>
+      <p>Por proposición en la plenaria de la Cámara, con base en el artículo 45 de la Ley 5ª de 1992, y por resolución conjunta de las Mesas Directivas de Senado y Cámara, el mismo camino que siguió la comisión de inteligencia artificial en 2024. Estaría abierta a congresistas de todas las bancadas, haría audiencias públicas con academia, empresas, Gobierno y parques tecnológicos, y rendiría informes a las plenarias. Faltan por definir el número de integrantes, la secretaría técnica y el nombre definitivo.</p>
+      <div class="nc-docs">
+        <a class="descarga" href="docs/Justificacion-Comision-Tecnologias-Emergentes.pdf" download>Descargar la justificación (PDF)</a>
+        <a class="descarga claro" href="docs/Proposicion-Resolucion-Comision-Tecnologias-Emergentes.pdf" download>Descargar el borrador de proposición y resolución (PDF)</a>
+      </div>
+    </div>
+
+    <div class="nc-consulta">
+      <div>
+        <h3>Consulta ciudadana: ¿qué opinas?</h3>
+        <p class="intro">Tus respuestas se suman a los resultados que ves al lado y llegan directo al equipo de Manuel. Toma dos minutos.</p>
+        <form class="panel" id="p-consulta" data-form="consulta" novalidate>
+          <fieldset class="campo ancho"><legend>¿Debería crearse esta comisión?</legend>
+            <div class="opciones">
+              <label><input type="radio" name="apoyo" value="Sí"> Sí</label>
+              <label><input type="radio" name="apoyo" value="No"> No, con las actuales basta</label>
+              <label><input type="radio" name="apoyo" value="Necesito más información"> Necesito más información</label>
+            </div>
+          </fieldset>
+          <fieldset class="campo ancho" style="margin-top:18px"><legend>¿Qué temas debería priorizar? Elige hasta 3</legend>
+            <div class="opciones" id="k-ejes">
+              <label><input type="checkbox" name="ejes" value="Neuroderechos y neurotecnología"> Neuroderechos</label>
+              <label><input type="checkbox" name="ejes" value="Semiconductores y computación cuántica"> Semiconductores y cuántica</label>
+              <label><input type="checkbox" name="ejes" value="Biotecnología y edición genética"> Biotecnología</label>
+              <label><input type="checkbox" name="ejes" value="Tecnología espacial y conectividad satelital"> Espacio y conectividad</label>
+              <label><input type="checkbox" name="ejes" value="Ciberseguridad y soberanía digital"> Ciberseguridad</label>
+              <label><input type="checkbox" name="ejes" value="Ciencia aplicada y empresa"> Ciencia aplicada y empresa</label>
+              <label><input type="checkbox" name="ejes" value="Desarrollo territorial"> Desarrollo territorial</label>
+            </div>
+          </fieldset>
+          <div class="campos" style="margin-top:18px">
+            <div class="campo"><label for="k-sector">Participas como</label>
+              <select id="k-sector" name="sector" required><option value="">Elige una opción</option><option>Ciudadano o ciudadana</option><option>Academia o investigación</option><option>Empresa o industria</option><option>Emprendimiento o startup</option><option>Sector público</option><option>Organización social</option><option>Estudiante</option></select></div>
+            <div class="campo"><label for="k-municipio">Municipio</label><select id="k-municipio" name="municipio" required></select></div>
+            <div class="campo ancho"><label for="k-aporte">Tu aporte <span class="opcional">(opcional)</span></label><textarea id="k-aporte" name="aporte" maxlength="2000" style="min-height:110px" placeholder="¿Qué debería estudiar esta comisión? ¿Qué le falta? ¿A quién debería escuchar?"></textarea></div>
+            <div class="campo"><label for="k-nombre">Nombre <span class="opcional">(opcional)</span></label><input id="k-nombre" name="nombre" autocomplete="name" maxlength="120"></div>
+            <div class="campo"><label for="k-correo">Correo <span class="opcional">(opcional, para invitarte a las audiencias)</span></label><input id="k-correo" name="correo" type="email" autocomplete="email" maxlength="160"></div>
+            <label class="autoriza"><input type="checkbox" name="autoriza" required> <span>Autorizo el tratamiento de mis datos para esta consulta, según la <a href="politica-datos.html" target="_blank">política de tratamiento de datos</a>. Solo se publican totales.</span></label>
+          </div>
+          <div class="trampa" aria-hidden="true"><label>No llenar<input name="web" tabindex="-1" autocomplete="off"></label></div>
+          <div class="enviar"><button class="boton" type="submit">Enviar mi opinión</button><span class="estado-envio" role="status" aria-live="polite"></span></div>
+        </form>
+      </div>
+      <aside class="nc-resultados" aria-labelledby="nc-res-t">
+        <h3 id="nc-res-t">Así va la consulta</h3>
+        <p class="nc-total"><b id="nc-total">0</b> personas han opinado</p>
+        <div class="nc-apoyo" id="nc-apoyo"></div>
+        <h4>Temas más pedidos</h4>
+        <ol class="nc-barras" id="nc-barras"></ol>
+        <small id="nc-nota"></small>
+      </aside>
+    </div>
+    <p class="fuente nc-fuentes">Fuentes: documentos de justificación y proposición del despacho (agosto de 2026); <a href="https://senado.gov.co/index.php/el-senado/noticias?start=1140" target="_blank" rel="noopener">Prensa Senado</a> sobre la Comisión de IA; <a href="https://apicongresovisible.uniandes.edu.co/uploads/proyecto-ley/14669/1264/25.pdf" target="_blank" rel="noopener">Gaceta 1264 de 2025</a> sobre el PL de Comisión Legal.</p>
   </div>
 </section>
 
@@ -838,7 +1019,7 @@ footer a{color:#fff}
 
   /* Selects de municipios */
   var NOMBRES = MAPA.m.map(function(m){ return m.n; }).sort(function(a,b){ return a.localeCompare(b,"es"); });
-  ["b-municipio","v-municipio","n-municipio"].forEach(function(id){
+  ["b-municipio","v-municipio","n-municipio","k-municipio"].forEach(function(id){
     document.getElementById(id).innerHTML = '<option value="">Elige tu municipio</option>' +
       NOMBRES.map(function(n){ return "<option>"+n+"</option>"; }).join("") + '<option>Otro (fuera de Caldas)</option>';
   });
@@ -1033,7 +1214,7 @@ footer a{color:#fff}
   /* ---------- Envío de formularios ---------- */
   function leerDemo(){ try { return JSON.parse(localStorage.getItem("mc_demo") || "[]"); } catch(e){ return []; } }
   function guardarDemo(r){ try { var a = leerDemo(); a.push(r); localStorage.setItem("mc_demo", JSON.stringify(a)); } catch(e){} }
-  var MENSAJE_OK = {buzon:"Recibido. Gracias por escribir: el equipo te responderá al correo.", voluntarios:"Listo, ya eres parte de la red. Te contactaremos pronto.", boletin:"Listo, quedaste suscrito al boletín."};
+  var MENSAJE_OK = {buzon:"Recibido. Gracias por escribir: el equipo te responderá al correo.", voluntarios:"Listo, ya eres parte de la red. Te contactaremos pronto.", boletin:"Listo, quedaste suscrito al boletín.", consulta:"Gracias por opinar. Tu respuesta ya cuenta en los resultados."};
   document.querySelectorAll("form[data-form]").forEach(function(f){
     f.addEventListener("submit", function(e){
       e.preventDefault();
@@ -1042,6 +1223,12 @@ footer a{color:#fff}
       var faltante = Array.prototype.find.call(f.querySelectorAll("[required]"), function(el){
         return el.type === "checkbox" ? !el.checked : !el.value.trim() || (el.type==="email" && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value.trim()));
       });
+      if (!faltante && f.dataset.form === "consulta"){
+        var nEjes = f.querySelectorAll('input[name="ejes"]:checked').length;
+        if (!f.querySelector('input[name="apoyo"]:checked')){ estado.className = "estado-envio error"; estado.textContent = "Cuéntanos si crees que debería crearse la comisión."; f.querySelector('input[name="apoyo"]').focus(); return; }
+        if (nEjes < 1 || nEjes > 3){ estado.className = "estado-envio error"; estado.textContent = "Elige entre 1 y 3 temas prioritarios."; f.querySelector('input[name="ejes"]').focus(); return; }
+      }
+      if (!faltante){ var em = f.querySelector('input[type="email"]:not([required])'); if (em && em.value.trim() && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value.trim())) faltante = em; }
       if (faltante){
         estado.className = "estado-envio error";
         estado.textContent = faltante.type === "checkbox" ? "Para enviar, marca la casilla de autorización de datos."
@@ -1051,7 +1238,7 @@ footer a{color:#fff}
       }
       var datos = {form: f.dataset.form, pagina: location.hostname || "local"};
       new FormData(f).forEach(function(v, k){
-        if (k === "ayuda") datos.ayuda = (datos.ayuda ? datos.ayuda + ", " : "") + v;
+        if (k === "ayuda" || k === "ejes") datos[k] = (datos[k] ? datos[k] + ", " : "") + v;
         else if (k === "autoriza") datos.autoriza = true;
         else datos[k] = String(v).trim();
       });
@@ -1068,7 +1255,7 @@ footer a{color:#fff}
       }
       fetch(URL_HOJA, {method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body: JSON.stringify(datos)})
         .then(function(r){ return r.json(); })
-        .then(function(r){ r && r.ok ? fin(true, MENSAJE_OK[datos.form]) : fin(false, "No se pudo guardar: " + ((r && r.error) || "intenta de nuevo en un momento.")); })
+        .then(function(r){ r && r.ok ? fin(true, MENSAJE_OK[datos.form]) : fin(false, r && r.error === "formulario desconocido." ? "La consulta abre en unos minutos. Intenta de nuevo más tarde." : "No se pudo guardar: " + ((r && r.error) || "intenta de nuevo en un momento.")); })
         .catch(function(){ fin(false, "No se pudo enviar. Revisa tu conexión a internet e intenta de nuevo."); });
     });
   });
@@ -1079,18 +1266,39 @@ footer a{color:#fff}
     document.getElementById("c-municipios").textContent = (t.municipios||0);
     document.getElementById("c-voluntarios").textContent = (t.voluntarios||0).toLocaleString("es-CO");
   }
+  var EJES_C = ["Neuroderechos y neurotecnología","Semiconductores y computación cuántica","Biotecnología y edición genética","Tecnología espacial y conectividad satelital","Ciberseguridad y soberanía digital","Ciencia aplicada y empresa","Desarrollo territorial"];
+  document.getElementById("k-ejes").addEventListener("change", function(){
+    var marcadas = this.querySelectorAll("input:checked").length;
+    this.querySelectorAll("input").forEach(function(i){ i.disabled = !i.checked && marcadas >= 3; });
+  });
+  function pintarConsulta(c){
+    c = c || {total:0, apoyo:{}, ejes:{}};
+    document.getElementById("nc-total").textContent = (c.total||0).toLocaleString("es-CO");
+    var A = [["Sí","#8CC152"],["Necesito más información","#F0BE3E"],["No","#D2433F"]], tot = c.total || 0;
+    document.getElementById("nc-apoyo").innerHTML = A.map(function(a){ var n = (c.apoyo||{})[a[0]]||0; return tot ? '<i style="width:'+(n*100/tot)+'%;background:'+a[1]+'" title="'+a[0]+': '+n+'"></i>' : ""; }).join("");
+    var ley = document.getElementById("nc-leyenda");
+    if (!ley){ ley = document.createElement("div"); ley.className = "nc-leyenda"; ley.id = "nc-leyenda"; document.getElementById("nc-apoyo").after(ley); }
+    ley.innerHTML = A.map(function(a){ var n = (c.apoyo||{})[a[0]]||0; return '<span style="--c:'+a[1]+'">'+esc(a[0])+': '+(tot ? Math.round(n*100/tot) : 0)+'%</span>'; }).join("");
+    var orden = EJES_C.map(function(e){ return [e, (c.ejes||{})[e]||0]; }).sort(function(x,y){ return y[1]-x[1]; });
+    var max = Math.max(1, orden[0][1]);
+    document.getElementById("nc-barras").innerHTML = orden.map(function(o){ return '<li><div class="fila"><span>'+esc(o[0])+'</span><b>'+o[1]+'</b></div><div class="barra"><i style="width:'+(o[1]*100/max)+'%"></i></div></li>'; }).join("");
+  }
   function cargarTotales(){
     var nota = document.getElementById("c-nota");
     if (DEMO){
       var a = leerDemo(), m = {};
       a.forEach(function(r){ if (r.form==="buzon" && r.municipio && r.municipio.indexOf("Otro")!==0) m[r.municipio]=1; });
       pintarTotales({buzon:a.filter(function(r){return r.form==="buzon";}).length, voluntarios:a.filter(function(r){return r.form==="voluntarios";}).length, municipios:Object.keys(m).length});
+      var cs = a.filter(function(r){ return r.form==="consulta"; }), cc = {total:cs.length, apoyo:{}, ejes:{}};
+      cs.forEach(function(r){ cc.apoyo[r.apoyo] = (cc.apoyo[r.apoyo]||0)+1; String(r.ejes||"").split(", ").forEach(function(e){ if (e) cc.ejes[e] = (cc.ejes[e]||0)+1; }); });
+      pintarConsulta(cc); document.getElementById("nc-nota").textContent = "Cifras de demostración: cuentan solo lo enviado desde este navegador.";
       nota.textContent = "Cifras de demostración: cuentan solo lo enviado desde este navegador."; return;
     }
     fetch(URL_HOJA + "?accion=totales").then(function(r){return r.json();})
-      .then(function(t){ if (t && t.ok){ pintarTotales(t); nota.textContent = "De 27 municipios. Actualizado " + new Date().toLocaleString("es-CO",{dateStyle:"medium",timeStyle:"short"}) + "."; } })
+      .then(function(t){ if (t && t.ok){ pintarTotales(t); pintarConsulta(t.consulta); document.getElementById("nc-nota").textContent = t.consulta ? "Solo totales. Actualizado " + new Date().toLocaleString("es-CO",{dateStyle:"medium",timeStyle:"short"}) + "." : "Los resultados aparecerán aquí en cuanto se activen."; nota.textContent = "De 27 municipios. Actualizado " + new Date().toLocaleString("es-CO",{dateStyle:"medium",timeStyle:"short"}) + "."; } })
       .catch(function(){ nota.textContent = "No se pudieron cargar las cifras en este momento."; });
   }
+  pintarConsulta(null);
   cargarTotales();
 })();
 </script>
