@@ -1,0 +1,5 @@
+# Si encuentras una vulnerabilidad en esta página, repórtala de forma privada.
+Contact: mailto:manuel.correa@camara.gov.co
+Expires: 2027-11-17T00:00:00.000Z
+Preferred-Languages: es, en
+Canonical: https://www.manuelcorrea.org/.well-known/security.txt
