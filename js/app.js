@@ -380,7 +380,7 @@
       }
       fetch(URL_HOJA, {method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body: JSON.stringify(datos)})
         .then(function(r){ return r.json(); })
-        .then(function(r){ r && r.ok ? fin(true, MENSAJE_OK[datos.form]) : fin(false, r && r.error === "formulario desconocido." ? "La consulta abre en unos minutos. Intenta de nuevo más tarde." : "No se pudo guardar: " + ((r && r.error) || "intenta de nuevo en un momento.")); })
+        .then(function(r){ r && r.ok ? fin(true, MENSAJE_OK[datos.form]) : fin(false, r && r.error === "formulario desconocido." ? "La consulta todavía no está recibiendo respuestas y la tuya no se guardó. Estamos terminando de activarla: vuelve a intentarlo hoy más tarde." : "No se pudo guardar: " + ((r && r.error) || "intenta de nuevo en un momento.")); })
         .catch(function(){ fin(false, "No se pudo enviar. Revisa tu conexión a internet e intenta de nuevo."); });
     });
   });
